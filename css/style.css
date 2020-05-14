@@ -1,7 +1,45 @@
+/*https://coolors.co/ee6352-292f36-18206f-f6f4f3-787776*/
 body{
-    background: #e3e3df;
+    background: #f6f4f3;
     font: 12pt;
 }
+.main-nav{
+    background-color: #292f36;
+    padding: 5px;
+}
+.main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #292f36;
+  }
+  
+  .main-nav li {
+    float: left;
+  }
+  .main-nav .post-bt{
+    padding: 6px 8px;
+    border: solid 2px #ee6352;
+    border-radius: 20px;
+    margin: 3px;
+}
+  .main-nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+ .main-nav li a:hover {
+    border-bottom: solid 3px #ee6352;
+  }
+  .main-nav .post-bt:hover{
+    background-color: #ee6352;
+  }
+
+  
 .gallery_container{
     width: 95%;
     min-height: 100vh;
@@ -12,7 +50,7 @@ body{
     grid-auto-rows: 200px
 }
 .gal-nav{
-    color: white;
+    color: #787776;
     font-size: 14pt;
     width: 90%;
     margin: 0 auto;
@@ -20,8 +58,8 @@ body{
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     
-    background-color: rgb(41, 41, 163);
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   
+    background-color: inherit;
+    /*box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   */
 
     padding: 10px;
     margin: 10px;
@@ -30,10 +68,11 @@ body{
 
 .gal-nav input, select, button{
     border-radius: 20px;
-    border-color: whitesmoke;
+    border-color: #18206f;
     font-size: 12pt;
-    background-color: inherit;
-    border-width:2px;
+    background-color: #ee6352;
+    border-width:3px;
+    padding: 7px;
     color: white;
 }
 .gal-nav .button-holder{
