@@ -285,9 +285,9 @@ img {
     justify-content: space-evenly;
     background-color: #f6f4f3;
     position: absolute;
-    width: 80%;
+    width: 90%;
     height: 70px;
-    left: 10%;
+    left: 5%;
     top: 10%;
     border-radius: 20px;
     opacity: 0;
@@ -295,7 +295,7 @@ img {
 
   }
   .pic-edit-picker span {
-    padding: 2px;
+    padding: 6px;
   }
 
   .pic-edit-picker-show{
@@ -305,4 +305,7 @@ img {
   .pic-control-bar-show{
     visibility: visible;
     opacity: 1;
+  }
+  .pic-edit-picked{
+    border: 2px solid #ee6352;
   }
