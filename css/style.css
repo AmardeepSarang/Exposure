@@ -224,7 +224,8 @@ Gallery images and controls
 */
 .img_box{
 
-    background-image: url('/images/white-blurred-background.jpg');
+  background: rgb(245,146,134);
+background: linear-gradient(0deg, rgba(245,146,134,0.7898688580482416) 0%, rgba(114,124,244,1) 100%);
   position: relative;
 
     /* Full height */
@@ -308,10 +309,52 @@ img {
   }
   .pic-edit-picked{
     border: 2px solid #ee6352;
+  
   }
 
-  
-  
+/*
+///////////////////////////////////////////////
+Gallery full screen image
+//////////////////////////////////////////////
+*/
+
+.gal-full-view{
+  position: fixed;
+  top: 2.5%;
+  left: 2.5%;
+  width: 95%;
+  height: 95%;
+
+  background: rgb(238,99,82);
+background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47,53,125,1) 100%);
+  z-index: 3;
+  visibility: hidden;
+}
+.gal-full-view-show{
+  visibility: visible;
+}
+.gal-full-view button{
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  width: 5%;
+  height: 5%;
+  font-size: 20px;
+  background-color: inherit;
+  border: none;
+  color: #ee6352;
+
+}
+.gal-full-view img{
+  max-width: 93%;
+  max-height:93%;
+  margin: auto;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
   /* Login Page */
   /*/////////////////////////////////////////////////////////////////////*/
   .login-box{

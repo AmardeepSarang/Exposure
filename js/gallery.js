@@ -108,3 +108,19 @@ function setActive(editBar, mainImgSrc){
         }
     });
 }
+
+//////////////////////////////////////////////////////
+// Script for full screen button 
+///////////////////////////////////////////////////////
+$('.fullscreen-bt').click(function(){
+    //put current image in full screen div
+    var mainImg = $(this).parent().parent().parent().children('img')
+    var src = mainImg.attr('src')
+    $('.gal-full-view img').attr('src',src)
+    //show div
+    $('.gal-full-view').addClass('gal-full-view-show')
+});
+
+$('.fullscreen-close-bt').click(function(){
+    $('.gal-full-view').removeClass('gal-full-view-show')
+});
