@@ -403,3 +403,60 @@ h2{
   background: #ee6352;
 }
 /*/////////////////////////////////////////////////////////////////////////*/
+
+
+  /* User profile Page */
+  /*/////////////////////////////////////////////////////////////////////*/
+  .fold-con{
+    
+    width: 88%;
+    margin: 0 auto;
+  }
+  .user-stats{
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 50px 
+  }
+  
+  .user-stats p{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 16pt;
+    color: #2f357d;
+  }
+
+  .user-stats p b{
+    color: #ee6352;
+  }
+
+  .user-heading{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #292F36;
+    margin-top: 20px;
+    vertical-align: auto;
+  }
+  .user-heading h1{
+    
+    font-family: 'Permanent Marker', cursive;
+    font-size: 22pt;
+    color: #ee6352;
+    margin: 0 auto; 
+    padding-top: 20px;
+
+    
+  }
+  .user-heading button{
+    position: absolute;
+    left: 1%;
+    top: 5%;
+    width: 5%;
+    height: 90%;
+    font-size: 20px;
+    background-color: inherit;
+    border: none;
+    color: #ee6352;
+  }

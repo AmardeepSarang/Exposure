@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User profile</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/57c4c79ee8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!--
+        main nav bar
+    -->
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="images/logo.png">
+
+        </div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="post-bt">
+            <a href="#"><i class="fas fa-plus"></i>&nbsp Post new image</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
+            <li><a href="#"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
+        </ul>
+    </nav>
+
+    <div class="user-heading">
+        <button type="button" data-toggle="collapse" data-target="#stat-fold"><i
+                class="fas fa-chevron-circle-right"></i></button>
+
+        <h1>Your Exposure Stats</h1>
+
+    </div>
+
+    <div class="fold-con collapse in" id="stat-fold">
+        <div class="user-stats">
+            <p>Images Uploaded: <b>10</b></p>
+            <p>Images Edited: <b>10</b></p>
+            <p>Images Liked: <b>10</b></p>
+            <p>Likes On Images <br>You Uploaded: <b>108</b></p>
+            <p>Likes On Images <br>You Edited: <b>108</b></p>
+        </div>
+    </div>
+
+    <!--Just a tech demo will remove-->
+    <button type="button" data-toggle="collapse" data-target="#demo">Simple
+        collapsible</button>
+
+    <div id="demo" class="collapse">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div>
+
+
+</body>
