@@ -357,20 +357,20 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 }
   /* Login Page */
   /*/////////////////////////////////////////////////////////////////////*/
-  .login-box{
-    width: 1080px;
-    height: 720px;
-    background: #2f2f2f;
-    border-radius: 20px;
-    outline: solid #ee6352;
-    color: #ffff;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    box-sizing: border-box;
-    padding: 70px 30px;
-  }
+#login-box{
+  width: 460px;
+  height: 620px;
+  background: #2f2f2f;
+  outline: solid #ee6352;
+  outline-width: 20px;
+  color: #ffff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  padding: 70px 0px;
+}
 
 h1{
   margin: 0;
@@ -386,21 +386,27 @@ h2{
   font-size: 15pt;
 }
 
-.login-box input[type="text"], input[type="Password"]
+#login-box input[type="text"], input[type="Password"]
 {
-  width: 980px;
+  width:450px;
+  padding-left: 15px ;
   height: 40px;
-  border: 1px solid #ffff;
+  border: none;
+  border-bottom: 1px solid #ee6352;
   background: transparent;
-  color: #ffff;
-
+  color: #2f2f2f;
 }
 
-.login-box input[type="submit"]
+
+#login-box input[type="submit"]
 {
-  width: 980px;
-  height: 40px;
+  
+  width: 460px;
+  height: 120px;
+  border: none;
   background: #ee6352;
+  left: auto;
+  margin-left:-30;
 }
 /*/////////////////////////////////////////////////////////////////////////*/
 
