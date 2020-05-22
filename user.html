@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
 </head>
 
 <body>
@@ -38,10 +39,15 @@
             <li><a href="#"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
         </ul>
     </nav>
-
+    <!--
+        Start of page content
+    -->
+    <div class="user-heading user-welcome">
+    <h1>Welcome, Amardeep! Take a look at what you have been up to on Exposure</h1>
+</div>
     <div class="user-heading">
         <button type="button" data-toggle="collapse" data-target="#stat-fold"><i
-                class="fas fa-chevron-circle-right"></i></button>
+                class="fas fa-chevron-circle-down"></i></button>
 
         <h1>Your Exposure Stats</h1>
 
@@ -57,15 +63,61 @@
         </div>
     </div>
 
-    <!--Just a tech demo will remove-->
-    <button type="button" data-toggle="collapse" data-target="#demo">Simple
-        collapsible</button>
 
-    <div id="demo" class="collapse">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    <div class="user-heading">
+        <button type="button" data-toggle="collapse" data-target="#like-fold"><i
+                class="fas fa-chevron-circle-down"></i></button>
+
+        <h1>Images You Liked</h1>
+
     </div>
 
+    <div class="fold-con collapse in" id="like-fold">
+        <div class="gallery_container">
 
+            <div class="img_box"><img src="/images/img (10).jpg"></div>
+            <div class="img_box"><img src="/images/img (11).jpg"></div>
+            <div class="img_box"><img src="/images/img (12).jpg"></div>
+            <div class="img_box"><img src="/images/img (13).jpg"></div>
+            <div class="img_box"><img src="/images/img (14).jpg"></div>
+            <div class="img_box"><img src="/images/img (15).jpg"></div>
+            <div class="img_box"><img src="/images/img (16).jpg"></div>
+        </div>
+    </div>
+
+    <div class="user-heading">
+        <button type="button" data-toggle="collapse" data-target="#edit-fold"><i
+                class="fas fa-chevron-circle-right"></i></button>
+
+        <h1>Images You Edited</h1>
+
+    </div>
+
+    <div class="fold-con collapse" id="edit-fold">
+        <div class="gallery_container">
+            <div class="img_box"><img src="/images/img (13).jpg"></div>
+            <div class="img_box"><img src="/images/img (14).jpg"></div>
+            <div class="img_box"><img src="/images/img (15).jpg"></div>
+            <div class="img_box"><img src="/images/img (16).jpg"></div>
+        </div>
+    </div>
+
+    <div class="user-heading">
+        <button type="button" data-toggle="collapse" data-target="#upload-fold"><i
+                class="fas fa-chevron-circle-right"></i></button>
+
+        <h1>Images You Uploaded</h1>
+
+    </div>
+
+    <div class="fold-con collapse" id="upload-fold">
+        <div class="gallery_container">
+
+            <div class="img_box"><img src="/images/img (10).jpg"></div>
+            <div class="img_box"><img src="/images/img (11).jpg"></div>
+            <div class="img_box"><img src="/images/img (12).jpg"></div>
+        </div>
+    </div>
+
+    <script src="js/user.js"></script>
 </body>

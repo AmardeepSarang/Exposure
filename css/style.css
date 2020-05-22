@@ -227,7 +227,6 @@ Gallery images and controls
   background: rgb(245,146,134);
 background: linear-gradient(0deg, rgba(245,146,134,0.7898688580482416) 0%, rgba(114,124,244,1) 100%);
   position: relative;
-
     /* Full height */
     height: 100%;
   
@@ -444,7 +443,9 @@ h2{
     background-color: #292F36;
     margin-top: 20px;
     vertical-align: auto;
+    margin-bottom: 20px;
   }
+  
   .user-heading h1{
     
     font-family: 'Permanent Marker', cursive;
@@ -455,6 +456,13 @@ h2{
 
     
   }
+  .user-welcome{
+    background-color: inherit;
+  }
+  .user-welcome h1{
+    color: #2f357d;
+  }
+  
   .user-heading button{
     position: absolute;
     left: 1%;
@@ -466,3 +474,10 @@ h2{
     border: none;
     color: #ee6352;
   }
+
+  .fold-con .gallery_container{
+
+    min-height: inherit;
+
+  }
+  
