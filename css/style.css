@@ -481,3 +481,52 @@ h2{
 
   }
   
+/*/////////////////////////////////////////////////////////////////////////*/
+
+
+  /* Post image form */
+  /*/////////////////////////////////////////////////////////////////////*/
+
+  .form-box{
+    width: 460px;
+    height: 620px;
+    font-size: 14pt;
+    background: #2f2f2f;
+    outline: solid #ee6352;
+    outline-width: 20px;
+    color: #ffff;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    padding: 70px 0px;
+  }
+@media only screen and (max-width: 530px) {
+  .form-box{
+    width: 360px;
+}
+@media only screen and (max-width: 400px) {
+  .form-box{
+    width: 300px;
+}
+}
+}
+  .form-box div{
+    padding: 10px;
+    border-bottom: 1px solid #ee6352;
+    
+    border-top: 1px solid #ee6352;
+  }
+  .form-box input
+  {
+    font-size: 12pt;
+    width:97%;
+    padding-left: 5px ;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: #f6f4f3;
+  }
+  .image-preview{
+    height: 20%;
+  }
