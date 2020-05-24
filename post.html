@@ -43,18 +43,24 @@
     <div class="form-box">
         <form action="upload.php" method="POST" enctype="multipart/form-data">
             <div class="image-preview">
+                <img src="images/placeholder_preview.png" alt="">
             </div>
-            <div>Title:<input type="text" name="title" placeholder="Enter title"></div>
-            <div>
-                File: <input type="file" name="file">
-            </div>
+            <div id="titleInput">Title:<input type="text" name="title" placeholder="Enter title"></div>
+            
             <div>
                 Tags (seperate tages by spaces):<br> <input type="text" name="tags" placeholder="Enter tags (optional)">
             </div>
             <div>
                 Description:<input type="text" name="description" placeholder="Enter description (optional)">
             </div>
+            <div id="filediv">
+                File: <input id="imginput" type="file" name="file">
+            </div>
+            <!--
+            <div>Title:<input type="text" name="title" placeholder="Enter title"></div>
+            -->
             <button type="submit" name="submit">Post image</button>
         </form>
     </div>
+    <script src="js/post.js"></script>
 </body>

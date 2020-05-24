@@ -499,7 +499,7 @@ h2{
     margin-top: 50px;
     margin-bottom: 50px;
     box-sizing: border-box;
-    padding: 70px 0px;
+    padding: 30px 0px;
   }
 @media only screen and (max-width: 530px) {
   .form-box{
@@ -527,6 +527,26 @@ h2{
     background: transparent;
     color: #f6f4f3;
   }
+  
   .image-preview{
-    height: 20%;
+    position: relative;
+    height: 160px; 
   }
+
+.form-box form button{
+  background-color: #ee6352;
+  border: none;
+  width: 100%;
+  height: 80px;
+  transition: background-color 0.2s linear;
+}
+.form-box form button:hover{
+  background-color:#f6f4f3;
+  color: #ee6352;
+  transition: background-color 0.2s linear;
+}
+
+.error-red{
+  color: red;
+  font-weight: bold;
+}
