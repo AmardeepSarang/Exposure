@@ -371,14 +371,16 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   padding: 70px 0px;
 }
 
-h1{
+#login-box h1{
+  font-family: 'Permanent Marker', cursive;
   margin: 0;
   padding: 0 0 20px;
   text-align: center;
   font-size: 55pt;
 }
 
-h2{
+#login-box h2{
+  font-family: 'Permanent Marker', cursive;
   margin: 0;
   padding: 0 0 20px;
   text-align: center;
@@ -388,20 +390,33 @@ h2{
 #login-box input[type="text"], input[type="Password"]
 {
   width:450px;
-  padding-left: 15px ;
+  padding-left: 25px ;
   height: 40px;
   border: none;
-  border-bottom: 1px solid #ee6352;
+  border-bottom: 5px solid #ee6352;
   background: transparent;
-  color: #2f2f2f;
+  color: #ffff;
+}
+
+.login-nav {
+  height: 120px;
+  width: 100%;
+}
+
+.logo-login{
+  height: 80%;
+  float: center;
+  align-items: center;
+  padding: 6px;
 }
 
 
 #login-box input[type="submit"]
 {
-  
+  font-family: 'Permanent Marker', cursive;
+  font-size: 15pt;
   width: 460px;
-  height: 120px;
+  height: 100px;
   border: none;
   background: #ee6352;
   left: auto;
