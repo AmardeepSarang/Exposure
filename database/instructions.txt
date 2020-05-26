@@ -1,0 +1,5 @@
+Insruction for importing database
+1. go to XAMPP control panel
+2. click start on apache and MySQL
+3. click admin button on MySQL to open phpmyadmin (database manager)
+4. go to the 'import' tab and import the exposure.sql file
