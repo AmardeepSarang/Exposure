@@ -45,6 +45,78 @@ function uploadFile($file)
         return 'error';
     }
 }
+function getIdByPath($db, $path)
+{
+    //get image id using path name
+    $query = "SELECT * FROM `image` WHERE Img_file_name = '$path'";
+    $result = mysqli_query($db, $query);
+    
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        $row = mysqli_fetch_assoc($result);
+        //echo "id: " . $row["Img_id"] . " - path Name: " . $row["Img_file_name"] . "<br>";
+        return $row["Img_id"];
+    }
+}
+
+function getTagIdByname($db, $name)
+{
+    //get tag id if the tag exits
+    $query = "SELECT * FROM `tag` WHERE tag_name = '$name'";
+    $result = mysqli_query($db, $query);
+    
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        $row = mysqli_fetch_assoc($result);
+        //echo "id: " . $row["tag_id"] . " - Name: " . $row["tag_name"] . "<br>";
+        return $row["tag_id"];
+    }
+    return false;
+}
+
+function insertTag($db,$tag){
+    //inserts new tag and returns id
+    //use sanitation
+    $query = "INSERT INTO `tag` (`tag_id`, `tag_name`) VALUES (NULL, ?);";
+    if ($statement = mysqli_prepare($db, $query)) {
+
+        // bind parameters s - string,
+        $result = mysqli_stmt_bind_param($statement, 's', $tag);
+        if (!$result) {
+            print "<p>bounding error</p>";
+        }
+        // execute query
+        $result = mysqli_stmt_execute($statement);
+
+        if ($result) {
+            return getTagIdByname($db,$tag);
+        } else {
+            print "Mysql insert Error" . mysqli_stmt_error($statement);
+        }
+    }
+}
+
+
+function insertImgTag($db,$imgId,$tagId){
+    //inserts img tag relation in img_tag table
+    //use sanitation
+    $query = "INSERT INTO `img_tag` (`img_id`, `tag_id`) VALUES (?, ?);";
+    if ($statement = mysqli_prepare($db, $query)) {
+
+        // bind parameters s - string,
+        $result = mysqli_stmt_bind_param($statement, 'ss', $imgId,$tagId);
+        if (!$result) {
+            print "<p>bounding error</p>";
+        }
+        // execute query
+        $result = mysqli_stmt_execute($statement);
+
+        if (!$result) {
+            print "Mysql insert Error" . mysqli_stmt_error($statement);
+        }
+    }
+}
+
 if (isset($_POST['submit'])) {
     $file = $_FILES['file'];
     $path = uploadFile($file);
@@ -53,6 +125,7 @@ if (isset($_POST['submit'])) {
     $tags = $_POST['tags'];
     //seperate tags
     $tagList = explode(' ', $tags);
+    /*
     echo "<br>";
     echo $path;
     echo "<br>";
@@ -63,26 +136,67 @@ if (isset($_POST['submit'])) {
     echo $tags;
     echo "<br>";
     print_r($tagList);
+*/
 
-    //insert image
+
+    /////////////////////
+
     // Connect to MySQL
-    $conn = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+    $db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+
+    // Error checking
+    if (!$db) {
+        print "<p>Error - Could not connect to MySQL</p>";
+        exit;
+    }
+    $error = mysqli_connect_error();
+
+    if ($error != null) {
+        $output = "<p>Unable to connet to database</p>" . $error;
+        exit($output);
     }
 
-    $is_original=1;
-    $user=1;//temp
+    //insert imag
+    $user = 1;
+    $is_original = 1;
+    //use sanitation
+    $query = "INSERT INTO `image` (`Img_id`, `title`, `Img_file_name`, `edited_by`, `uploaded_by`, `is_original`, `uploaded_on`, `description`) VALUES (NULL, ?, ?, NULL, ?, ?, current_timestamp(), ?)";
+    if ($statement = mysqli_prepare($db, $query)) {
 
-    $sql = "INSERT INTO `image` (`Img_id`, `title`, `Img_file_name`, `edited_by`, `uploaded_by`, `is_original`, `uploaded_on`, `description`) VALUES (NULL, '$title', '$path', NULL, '$user', '$is_original', current_timestamp(), '$desc')";
+        // bind parameters s - string,
+        $result = mysqli_stmt_bind_param($statement, 'sssss', $title, $path, $user, $is_original, $desc);
+        if (!$result) {
+            print "<p>bounding error</p>";
+        }
+        // execute query
+        $result = mysqli_stmt_execute($statement);
+
+        if ($result) {
+            print "<p>Your image post was successful</p>";
+        } else {
+            print "Mysql insert Error" . mysqli_stmt_error($statement);
+        }
+    }
+
+    $imgId = getIdByPath($db, $path);
+    //echo $imgId;
+
+    //for each tag see if it exits in tag table and the link it with img
+    foreach ($tagList as $tag){
+        $id=getTagIdByname($db, $tag);
+        
+        if($id==false){
+            //no such tag so insert it
     
+            $id=insertTag($db,$tag);
+           // echo $id ."(inserted) ".$tag."<br>";
+        }/*else{
+            echo $id ." ".$tag."<br>";
+        }*/
 
-    if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        //insert relation
+        insertImgTag($db,$imgId,$id);
     }
 
-    mysqli_close($conn);
+    mysqli_close($db);
 }
