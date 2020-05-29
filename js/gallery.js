@@ -119,8 +119,37 @@ $('.fullscreen-bt').click(function(){
     $('.gal-full-view img').attr('src',src)
     //show div
     $('.gal-full-view').addClass('gal-full-view-show')
+
 });
 
 $('.fullscreen-close-bt').click(function(){
     $('.gal-full-view').removeClass('gal-full-view-show')
 });
+
+
+
+//////////////////////////////////////////////////////
+// Script for sorting and search
+///////////////////////////////////////////////////////
+function searchAndOrder(item){
+    
+    //get values
+    var sortVal=$('.gal-contr[name ="sort"]').val()
+    var orderVal=$('.gal-contr[name ="order"]').val()
+    var searchVal=$('input[name ="gal-search"]').val()
+    //construct url
+    url='gallery.php?sort='+sortVal+'&order='+orderVal
+    if(searchVal!=""){
+        //add search to url
+        url=url+"&search="+encodeURIComponent(searchVal)
+    }
+    console.log(url)
+    //go to url with pramas (reload page)
+    window.location.href = url;
+
+}
+$( ".gal-contr" ).change(function() {searchAndOrder(this)
+  });
+
+  $( "#gal-search-bt" ).click(function() {searchAndOrder(this)
+  });

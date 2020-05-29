@@ -1,10 +1,17 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
 <?php
 session_start();
 include_once 'include/config.php';
 function uploadFile($file)
 {
     //upload image to upload folder and return new file path
-    $MAX_FILE_SIZE = 5000000;/*b*/
+    $MAX_FILE_SIZE = 10000000;/*b*/
 
     //print_r($file);
     $fileName = $_FILES['file']['name'];
@@ -23,7 +30,7 @@ function uploadFile($file)
         //check for upload error
         if ($fileError === 0) {
             //check file size
-            echo $MAX_FILE_SIZE . ">" . $fileSize;
+            //echo $MAX_FILE_SIZE . ">" . $fileSize;
             if ($fileSize < $MAX_FILE_SIZE) {
                 //create uniqe file name using time stamp
                 $fileNameNew = uniqid('', true) . "." . $fileActualExt;
@@ -116,7 +123,9 @@ function insertImgTag($db,$imgId,$tagId){
         }
     }
 }
-
+?>
+<div class="form-box">
+<?php
 if (isset($_POST['submit'])) {
     $file = $_FILES['file'];
     $path = uploadFile($file);
@@ -183,6 +192,7 @@ if (isset($_POST['submit'])) {
 
     //for each tag see if it exits in tag table and the link it with img
     foreach ($tagList as $tag){
+        $tag=strtolower($tag);
         $id=getTagIdByname($db, $tag);
         
         if($id==false){
@@ -200,3 +210,8 @@ if (isset($_POST['submit'])) {
 
     mysqli_close($db);
 }
+
+
+?>
+<button id="upload-con" onclick="window.location.href='gallery.html';">Continue</button>
+</div>
