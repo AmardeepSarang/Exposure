@@ -1,26 +1,159 @@
 <?php
 session_start();
 include_once 'include/config.php';
+function addOrderOp()
+{
+    //add select option selection on reload, keep right option selected
+    if (isset($_GET['order'])) {
+        $order = $_GET['order'];
+        if (strcmp($order, "ascend") == 0) {
+            echo '<option value="ascend" selected >Ascending order</option>';
+            echo '<option value="descend" >Descending order</option>';
+        } else {
 
-
-
-    // Connect to MySQL
-    $db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
-
-    // Error checking
-    if (!$db) {
-        print "<p>Error - Could not connect to MySQL</p>";
-        exit;
+            echo '<option value="ascend" >Ascending order</option>';
+            echo '<option value="descend" selected>Descending order</option>';
+        }
+    } else {
+        //defalt sql order in desending order
+        echo '<option value="ascend" >Ascending order</option>';
+        echo '<option value="descend" selected>Descending order</option>';
     }
-    $error = mysqli_connect_error();
-
-    if ($error != null) {
-        $output = "<p>Unable to connet to database</p>" . $error;
-        exit($output);
+}
+function addSortOp()
+{
+    //add select option selection on reload, keep right option selected
+    if (isset($_GET['sort'])) {
+        $sort = $_GET['sort'];
+        if (strcmp($sort, "alpha") == 0) {
+            echo '<option value="alpha" selected>Alphabetically</option>';
+            echo '<option value="date">Date Added</option>';
+            echo '<option value="likes"># of Likes</option>';
+            echo '<option value="edits"># of Edits</option>';
+        } else if (strcmp($sort, "likes") == 0) {
+            echo '<option value="alpha">Alphabetically</option>';
+            echo '<option value="date" >Date Added</option>';
+            echo '<option value="likes" selected ># of Likes</option>';
+            echo '<option value="edits"># of Edits</option>';
+        } else if (strcmp($sort, "edits") == 0) {
+            echo '<option value="alpha">Alphabetically</option>';
+            echo '<option value="date" >Date Added</option>';
+            echo '<option value="likes"># of Likes</option>';
+            echo '<option value="edits" selected ># of Edits</option>';
+        } else {
+            //select date by default
+            echo '<option value="alpha">Alphabetically</option>';
+            echo '<option value="date" selected >Date Added</option>';
+            echo '<option value="likes"># of Likes</option>';
+            echo '<option value="edits"># of Edits</option>';
+        }
+    } else {
+        //defalt sql order by
+        echo '<option value="alpha">Alphabetically</option>';
+        echo '<option value="date" selected >Date Added</option>';
+        echo '<option value="likes"># of Likes</option>';
+        echo '<option value="edits"># of Edits</option>';
     }
+}
+function addSearch()
+{
+    //adds baack search on reload
+    if (isset($_GET['search'])) {
+        $search=$_GET['search'];
+        echo ' value="'.$search.'" ';
+
+    }
+
+}
+
+function genSQL()
+{
+    //create sql code based on GET parametters
+    $sql = "";
+    $selectSQL = "";
+    $whereSQL = "WHERE is_original = 1";
+    $sortSQL = "";
+    $orderSQL = "";
+    $fromSQL="";
+    
+    if (isset($_GET['sort'])) {
+        //create the first section of the sql based on what to sort by
+        $sort = $_GET['sort'];
+        if (strcmp($sort, "alpha") == 0) {
+            $selectSQL = "SELECT *";
+            $fromSQL="FROM `image`";
+            $orderSQL = "ORDER BY title";
+        } else if (strcmp($sort, "likes") == 0) {
+            
+            $selectSQL = "SELECT `Img_id`,`title`,`Img_file_name`, (SELECT COUNT(*) FROM likes WHERE image.Img_id=likes.img_id) AS like_count";
+            $fromSQL="FROM `image`";
+            $orderSQL = "ORDER BY `like_count`";
+        } else if (strcmp($sort, "edits") == 0) {
+            //do later
+        } else {
+            //select date by default
+            $selectSQL = "SELECT *";
+            $fromSQL="FROM `image`";
+            $orderSQL = "ORDER BY uploaded_on";
+        }
+    } else {
+        //defalt sql order by
+        $selectSQL = "SELECT *";
+        $fromSQL="FROM `image`";
+        $orderSQL = "ORDER BY uploaded_on";;
+    }
+
+
+    //insert search into querry
+    if (isset($_GET['search'])) {
+        $search=$_GET['search'];
+        if($search[0]=="#"){
+            //handle tag search
+        }else{
+            //add search to querey
+            $whereSQL = $whereSQL . " AND LOWER(title) LIKE LOWER('%". $search."%')";
+        }
+
+    }
+
+
+    $sortSQL = "";
+    if (isset($_GET['order'])) {
+        //select sort order
+        $order = $_GET['order'];
+        if (strcmp($order, "ascend") == 0) {
+            $sortSQL = " ASC";
+        } else {
+            //defalt sql order in desending order
+            $sortSQL = " DESC";
+        }
+    } else {
+        //defalt sql order in desending order
+        $sortSQL = " DESC";
+    }
+    $sql = $selectSQL." ".$fromSQL ." ". $whereSQL ." ". $orderSQL ." ". $sortSQL;
+    echo $sql;
+    return $sql;
+}
+
+
+// Connect to MySQL
+$db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+
+// Error checking
+if (!$db) {
+    print "<p>Error - Could not connect to MySQL</p>";
+    exit;
+}
+$error = mysqli_connect_error();
+
+if ($error != null) {
+    $output = "<p>Unable to connet to database</p>" . $error;
+    exit($output);
+}
 
 //get images from db
-$query = "SELECT * FROM `image` WHERE is_original = 1 ";
+$query = genSQL();
 $result = mysqli_query($db, $query);
 
 
@@ -69,7 +202,7 @@ $result = mysqli_query($db, $query);
         <button class="fullscreen-close-bt"><i class="far fa-times-circle"></i></button>
         <img src="">
     </div>
-    
+
     <!--
         Gallery nav bar
     -->
@@ -77,7 +210,7 @@ $result = mysqli_query($db, $query);
     <nav class="gal-nav">
 
         <div id="gal-search">
-            <input type="text" name="gal-search" placeholder="Search">
+            <input type="text"<?php addSearch()?> name="gal-search" placeholder="Search">
             <div class="button-holder">
                 <button><i class="fas fa-times"></i></button>
                 <button id='gal-search-bt'><i class="fas fa-search"></i></button>
@@ -86,58 +219,54 @@ $result = mysqli_query($db, $query);
         <div id="gal-sort">
             Sort:
             <select class="gal-contr" name="sort">
-                <option value="alpha" selected>Alphabetically</option>
-                <option value="date">Date Added</option>
-                <option value="likes"># of Likes</option>
-                <option value="edits"># of Edits</option>
+                <?php addSortOp() ?>
             </select>
             In
             <select class="gal-contr" name="order">
-                <option value="ascend" selected>Ascending order</option>
-                <option value="descend">Descending order</option>
+                <?php addOrderOp() ?>
             </select>
         </div>
 
     </nav>
 
-     <!--
+    <!--
         Gallery 
     -->
     <div class="gallery_container">
         <?php
-            
-            while($row = mysqli_fetch_assoc($result)) {
-                // output data of each row
-                //$row = mysqli_fetch_assoc($result);
-                $id=$row["Img_id"];
-                $path=$row["Img_file_name"];
-                //echo "id: " . $row["Img_id"] . " - path Name: " . $row["Img_file_name"] . "<br>";
-                
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            // output data of each row
+            //$row = mysqli_fetch_assoc($result);
+            $id = $row["Img_id"];
+            $path = $row["Img_file_name"];
+            //echo "id: " . $row["Img_id"] . " - path Name: " . $row["Img_file_name"] . "<br>";
+
         ?>
-        <div class="img_box">
-            <img src=<?php echo "'". $path. "'"?>>
-            <div class="pic-edit-picker">
-                <span><img class="pic-edit-picked" src=<?php echo "'". $path. "'"?>></span>
-                <span><img src="/images/img1-edits/img (1)-a.jpg"></span>
-                
-            
+            <div class="img_box">
+                <img src=<?php echo "'" . $path . "'" ?>>
+                <div class="pic-edit-picker">
+                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" ?>></span>
+                    <span><img src="/images/img1-edits/img (1)-a.jpg"></span>
+
+
+                </div>
+                <div class="pic-control-bar">
+                    <span><button><i class="fas fa-thumbs-up"></i></button></span>
+                    <span><button><i class="fas fa-plus-square"></i></button></span>
+                    <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
+                    <span><button><i class="fas fa-info-circle"></i></button></span>
+                    <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
+                    <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
+                    <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                </div>
             </div>
-            <div class="pic-control-bar">
-                <span><button><i class="fas fa-thumbs-up"></i></button></span>
-                <span><button><i class="fas fa-plus-square"></i></button></span>
-                <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
-                <span><button><i class="fas fa-info-circle"></i></button></span>
-                <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
-                <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
-                <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
-            </div>
-        </div>
 
         <?php } ?>
-        
+
     </div>
     <script src="js/nav.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/gallery.js"></script>
-    
+
 </body>
