@@ -32,7 +32,7 @@ $(".pic-edit-picker span img").hover(
     }, function () {
         //hover out, change back to origina;
         var mainImg = $(this).parent().parent().parent().children('img')
-        var editBar =$(this).parent().parent().parent().children('.pic-edit-picker')
+        var editBar = $(this).parent().parent().parent().children('.pic-edit-picker')
         mainImg.attr('src', mainSrc)
         setActive(editBar, mainSrc)
     }
@@ -61,7 +61,7 @@ function getSrcList(editBar) {
 
     return srcList;
 }
-function arrowClickHandle(target,direction) {
+function arrowClickHandle(target, direction) {
     //get main image and edit bar objects
     var mainImg = $(target).parent().parent().parent().children('img')
     var src = mainImg.attr('src')
@@ -70,39 +70,39 @@ function arrowClickHandle(target,direction) {
     var srcList = getSrcList(editBar);
     //find current place in list
     var i = srcList.indexOf(src)
-    
+
     //get next index with wrap
     if (direction == 'r') {
         //right arrow click
         i = (i + 1) % srcList.length
     } else {
         //left arrow click
-        i=i-1
-        if(i<0){
-            i=srcList.length-1;
+        i = i - 1
+        if (i < 0) {
+            i = srcList.length - 1;
         }
-        
+
     }
     //assign new image to main image
     mainImg.attr('src', srcList[i])
     setActive(editBar, srcList[i])
 }
-$(".edit-sl-arw-r").click(function(){arrowClickHandle(this,'r')}
+$(".edit-sl-arw-r").click(function () { arrowClickHandle(this, 'r') }
 );
 
-$(".edit-sl-arw-l").click(function(){arrowClickHandle(this,'l')}
+$(".edit-sl-arw-l").click(function () { arrowClickHandle(this, 'l') }
 );
 
-function setActive(editBar, mainImgSrc){
+function setActive(editBar, mainImgSrc) {
     //set the image to have selected style if it is the one selected
     $(editBar).children('span').each(function () {
 
         var img = $(this).children('img');
-        
-        if(img.attr('src')==mainImgSrc){
+
+        if (img.attr('src') == mainImgSrc) {
             //added selected class
             img.addClass('pic-edit-picked')
-        }else{
+        } else {
             //remove selected class
             img.removeClass('pic-edit-picked')
         }
@@ -112,17 +112,17 @@ function setActive(editBar, mainImgSrc){
 //////////////////////////////////////////////////////
 // Script for full screen button 
 ///////////////////////////////////////////////////////
-$('.fullscreen-bt').click(function(){
+$('.fullscreen-bt').click(function () {
     //put current image in full screen div
     var mainImg = $(this).parent().parent().parent().children('img')
     var src = mainImg.attr('src')
-    $('.gal-full-view img').attr('src',src)
+    $('.gal-full-view img').attr('src', src)
     //show div
     $('.gal-full-view').addClass('gal-full-view-show')
 
 });
 
-$('.fullscreen-close-bt').click(function(){
+$('.fullscreen-close-bt').click(function () {
     $('.gal-full-view').removeClass('gal-full-view-show')
 });
 
@@ -131,25 +131,111 @@ $('.fullscreen-close-bt').click(function(){
 //////////////////////////////////////////////////////
 // Script for sorting and search
 ///////////////////////////////////////////////////////
-function searchAndOrder(item){
-    
+function searchAndOrder(item) {
+
     //get values
-    var sortVal=$('.gal-contr[name ="sort"]').val()
-    var orderVal=$('.gal-contr[name ="order"]').val()
-    var searchVal=$('input[name ="gal-search"]').val()
+    var sortVal = $('.gal-contr[name ="sort"]').val()
+    var orderVal = $('.gal-contr[name ="order"]').val()
+    var searchVal = $('input[name ="gal-search"]').val()
     //construct url
-    url='gallery.php?sort='+sortVal+'&order='+orderVal
-    if(searchVal!=""){
+    url = 'gallery.php?sort=' + sortVal + '&order=' + orderVal
+    if (searchVal != "") {
         //add search to url
-        url=url+"&search="+encodeURIComponent(searchVal)
+        url = url + "&search=" + encodeURIComponent(searchVal)
     }
     console.log(url)
     //go to url with pramas (reload page)
     window.location.href = url;
 
 }
-$( ".gal-contr" ).change(function() {searchAndOrder(this)
-  });
+$(".gal-contr").change(function () {
+    searchAndOrder(this)
+});
 
-  $( "#gal-search-bt" ).click(function() {searchAndOrder(this)
-  });
+$("#gal-search-bt").click(function () {
+    searchAndOrder(this)
+});
+
+/////////////////////////////////////////////////////////////////////
+///script for like bt
+///////////////////////////////////////////////////////////////////// 
+$(".like-bt").click(function () {
+    var icon = $(this).children("i")
+    var user = $(this).attr("data-user")
+    var img = $(this).attr("data-img")
+    var btn=$(this);
+    
+    if (user != -1) {
+
+        if (btn.hasClass("like-color")) {
+
+            console.log("remove")
+    
+            // remove like to db
+            $.ajax({
+                url: "like.php",
+                type: "POST",
+                data: {
+                    user: user,
+                    img: img,
+                    insert: 0
+                },
+                cache: false,
+                success: function (dataResult) {
+                    console.log(dataResult)
+                    var dataResult = JSON.parse(dataResult);
+                    if (dataResult.statusCode == 200) {
+                        //toggle off like
+                        btn.removeClass("like-color")//change color
+
+                        //make icon not solid
+                        icon.removeClass("fas")
+                        icon.addClass("far")
+
+                    }
+                    else if (dataResult.statusCode == 201) {
+                        alert("Can't remove like!");
+                    }
+
+                }
+            });
+
+
+        } else {
+            //add like to db
+            console.log("Add")
+            $.ajax({
+                url: "like.php",
+                type: "POST",
+                data: {
+                    user: user,
+                    img: img,
+                    insert: 1
+                },
+                cache: false,
+                success: function (dataResult) {
+                    console.log(dataResult)
+                    var dataResult = JSON.parse(dataResult);
+                    if (dataResult.statusCode == 200) {
+                        //toggle on like
+                        btn.addClass("like-color")//change color
+
+                        //make icon solid
+                        icon.removeClass("far")
+                        icon.addClass("fas")
+
+
+                    }
+                    else if (dataResult.statusCode == 201) {
+                        console.log("Can't add like")
+                    }
+
+                }
+            });
+
+
+
+        }
+
+    }
+})

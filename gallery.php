@@ -1,6 +1,9 @@
 <?php
 session_start();
 include_once 'include/config.php';
+////////////////////////////////////////////////
+//functions to save search bar state on reload 
+///////////////////////////////////////////////
 function addOrderOp()
 {
     //add select option selection on reload, keep right option selected
@@ -59,11 +62,9 @@ function addSearch()
 {
     //adds baack search on reload
     if (isset($_GET['search'])) {
-        $search=$_GET['search'];
-        echo ' value="'.$search.'" ';
-
+        $search = $_GET['search'];
+        echo ' value="' . $search . '" ';
     }
-
 }
 
 function genSQL()
@@ -74,46 +75,45 @@ function genSQL()
     $whereSQL = "WHERE is_original = 1";
     $sortSQL = "";
     $orderSQL = "";
-    $fromSQL="";
-    
+    $fromSQL = "";
+
     if (isset($_GET['sort'])) {
         //create the first section of the sql based on what to sort by
         $sort = $_GET['sort'];
         if (strcmp($sort, "alpha") == 0) {
             $selectSQL = "SELECT *";
-            $fromSQL="FROM `image`";
+            $fromSQL = "FROM `image`";
             $orderSQL = "ORDER BY title";
         } else if (strcmp($sort, "likes") == 0) {
-            
+
             $selectSQL = "SELECT `Img_id`,`title`,`Img_file_name`, (SELECT COUNT(*) FROM likes WHERE image.Img_id=likes.img_id) AS like_count";
-            $fromSQL="FROM `image`";
+            $fromSQL = "FROM `image`";
             $orderSQL = "ORDER BY `like_count`";
         } else if (strcmp($sort, "edits") == 0) {
             //do later
         } else {
             //select date by default
             $selectSQL = "SELECT *";
-            $fromSQL="FROM `image`";
+            $fromSQL = "FROM `image`";
             $orderSQL = "ORDER BY uploaded_on";
         }
     } else {
         //defalt sql order by
         $selectSQL = "SELECT *";
-        $fromSQL="FROM `image`";
+        $fromSQL = "FROM `image`";
         $orderSQL = "ORDER BY uploaded_on";;
     }
 
 
     //insert search into querry
     if (isset($_GET['search'])) {
-        $search=$_GET['search'];
-        if($search[0]=="#"){
+        $search = $_GET['search'];
+        if ($search[0] == "#") {
             //handle tag search
-        }else{
+        } else {
             //add search to querey
-            $whereSQL = $whereSQL . " AND LOWER(title) LIKE LOWER('%". $search."%')";
+            $whereSQL = $whereSQL . " AND LOWER(title) LIKE LOWER('%" . $search . "%')";
         }
-
     }
 
 
@@ -131,10 +131,27 @@ function genSQL()
         //defalt sql order in desending order
         $sortSQL = " DESC";
     }
-    $sql = $selectSQL." ".$fromSQL ." ". $whereSQL ." ". $orderSQL ." ". $sortSQL;
+    $sql = $selectSQL . " " . $fromSQL . " " . $whereSQL . " " . $orderSQL . " " . $sortSQL;
     echo $sql;
     return $sql;
 }
+
+function addLike($db, $user, $id)
+{
+    //check if a user is loged in
+
+    //add correct like button based on if pic has been liked
+    $query = "SELECT * FROM `likes` WHERE `user_id` = $user AND `img_id` = $id";
+    $result = mysqli_query($db, $query);
+    if (mysqli_num_rows($result) > 0) {
+        echo '<button data-user= "'.$user.'" data-img= "'.$id.'" class="like-bt like-color"><i class="fas fa-star"></i></button>';
+    } else {
+        echo '<button data-user= "'.$user.'" data-img= "'.$id.'" class="like-bt"><i class="far fa-star"></i></button>';
+    }
+}
+
+//get user (temp just set it)
+$user=111;
 
 
 // Connect to MySQL
@@ -210,7 +227,7 @@ $result = mysqli_query($db, $query);
     <nav class="gal-nav">
 
         <div id="gal-search">
-            <input type="text"<?php addSearch()?> name="gal-search" placeholder="Search">
+            <input type="text" <?php addSearch() ?> name="gal-search" placeholder="Search">
             <div class="button-holder">
                 <button><i class="fas fa-times"></i></button>
                 <button id='gal-search-bt'><i class="fas fa-search"></i></button>
@@ -252,7 +269,7 @@ $result = mysqli_query($db, $query);
 
                 </div>
                 <div class="pic-control-bar">
-                    <span><button><i class="fas fa-thumbs-up"></i></button></span>
+                    <span><?php addLike($db, $user, $id)?></span>
                     <span><button><i class="fas fa-plus-square"></i></button></span>
                     <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
                     <span><button><i class="fas fa-info-circle"></i></button></span>
