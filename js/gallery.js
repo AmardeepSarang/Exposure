@@ -156,6 +156,11 @@ $("#gal-search-bt").click(function () {
     searchAndOrder(this)
 });
 
+$("#gal-clear-bt").click(function () {
+    //console.log("clear")
+    $('input[name ="gal-search"]').val("")//clear search
+    searchAndOrder(this)
+});
 /////////////////////////////////////////////////////////////////////
 ///script for like bt
 ///////////////////////////////////////////////////////////////////// 
