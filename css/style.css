@@ -463,6 +463,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     margin-top: 20px;
     vertical-align: auto;
     margin-bottom: 20px;
+    text-align: center;
   }
   
   .user-heading h1{
@@ -470,7 +471,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     font-family: 'Permanent Marker', cursive;
     font-size: 22pt;
     color: #ee6352;
-    margin: 0 auto; 
+    padding-bottom: 20px;
     padding-top: 20px;
 
     
@@ -493,7 +494,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     border: none;
     color: #ee6352;
   }
-
+  
   .fold-con .gallery_container{
 
     min-height: inherit;

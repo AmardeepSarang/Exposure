@@ -151,9 +151,9 @@ function addLike($db, $user, $id)
     $query = "SELECT * FROM `likes` WHERE `user_id` = $user AND `img_id` = $id";
     $result = mysqli_query($db, $query);
     if (mysqli_num_rows($result) > 0) {
-        echo '<button data-user= "' . $user . '" data-img= "' . $id . '" class="like-bt like-color"><i class="fas fa-star"></i></button>';
+        echo '<button class="like-bt like-color"><i class="fas fa-star"></i></button>';
     } else {
-        echo '<button data-user= "' . $user . '" data-img= "' . $id . '" class="like-bt"><i class="far fa-star"></i></button>';
+        echo '<button class="like-bt"><i class="far fa-star"></i></button>';
     }
 }
 
@@ -233,7 +233,7 @@ $result = mysqli_query($db, $query);
 
     <nav class="gal-nav">
 
-        <div id="gal-search">
+        <div id="gal-search" >
             <input type="text" <?php addSearch() ?> name="gal-search" placeholder="Search title or start with # to search tag">
             <div class="button-holder">
                 <button id='gal-clear-bt'><i class="fas fa-times"></i></button>
@@ -267,7 +267,7 @@ $result = mysqli_query($db, $query);
             //echo "id: " . $row["Img_id"] . " - path Name: " . $row["Img_file_name"] . "<br>";
 
         ?>
-            <div class="img_box">
+            <div class="img_box" <?php echo'data-user= "' . $user . '" data-img= "' . $id .'"'?>>
                 <img src=<?php echo "'" . $path . "'" ?>>
                 <div class="pic-edit-picker">
                     <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" ?>></span>

@@ -166,10 +166,11 @@ $("#gal-clear-bt").click(function () {
 ///////////////////////////////////////////////////////////////////// 
 $(".like-bt").click(function () {
     var icon = $(this).children("i")
-    var user = $(this).attr("data-user")
-    var img = $(this).attr("data-img")
+    var user = $(this).parent().parent().parent().attr("data-user")
+    var img = $(this).parent().parent().parent().attr("data-img")
     var btn=$(this);
-    
+    console.log(user)    
+    console.log(img)
     if (user != -1) {
 
         if (btn.hasClass("like-color")) {

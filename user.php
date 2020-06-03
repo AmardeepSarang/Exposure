@@ -1,3 +1,66 @@
+<?php
+session_start();
+include_once 'include/config.php';
+
+//get user (temp just set it)
+$user = 111;
+
+
+// Connect to MySQL
+$db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+
+// Error checking
+if (!$db) {
+    print "<p>Error - Could not connect to MySQL</p>";
+    exit;
+}
+$error = mysqli_connect_error();
+
+if ($error != null) {
+    $output = "<p>Unable to connet to database</p>" . $error;
+    exit($output);
+}
+
+function getImgUploaded($db, $user){
+    //prints out the # images uploaded by the user
+    $query="SELECT COUNT(*) as count FROM `image` WHERE uploaded_by=$user";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo $row["count"];
+}
+
+function getImgEdited($db, $user){
+    //prints out the # images edited by the user
+    $query="SELECT COUNT(*) as count FROM `image` WHERE edited_by=$user";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo $row["count"];
+}
+function getImgLiked($db, $user){
+    //prints out the # images liked by the user
+    $query="SELECT COUNT(*) as count FROM likes WHERE user_id=$user";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo $row["count"];
+}
+
+function getLikeOnUpload($db, $user){
+    //prints out the # images liked by the user
+    $query="SELECT COUNT(*) as count FROM image, likes WHERE image.Img_id=likes.img_id AND image.uploaded_by=$user";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo $row["count"];
+}
+
+function getLikeOnEdited($db, $user){
+    //prints out the # images liked by the user
+    $query="SELECT COUNT(*) as count FROM image, likes WHERE image.Img_id=likes.img_id AND image.edited_by=$user";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo $row["count"];
+}
+
+?>
 <!DOCTYPE html>
 <html lan="en">
 
@@ -64,11 +127,11 @@
 
     <div class="fold-con collapse in" id="stat-fold">
         <div class="user-stats">
-            <p>Images Uploaded: <b>10</b></p>
-            <p>Images Edited: <b>10</b></p>
-            <p>Images Liked: <b>10</b></p>
-            <p>Likes On Images <br>You Uploaded: <b>108</b></p>
-            <p>Likes On Images <br>You Edited: <b>108</b></p>
+            <p>Images Uploaded: <b><?php getImgUploaded($db, $user)?></b></p>
+            <p>Images Edited: <b><?php getImgEdited($db, $user)?></b></p>
+            <p>Images Liked: <b><?php getImgLiked($db, $user)?></b></p>
+            <p>Likes On Images <br>You Uploaded: <b><?php getLikeOnUpload($db, $user)?></b></p>
+            <p>Likes On Images <br>You Edited: <b><?php getLikeOnEdited($db, $user)?></b></p>
         </div>
     </div>
 
