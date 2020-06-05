@@ -500,6 +500,12 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     min-height: inherit;
 
   }
+
+  .fold-empty{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 16pt;
+    color: #ee6352;
+  }
   
 /*/////////////////////////////////////////////////////////////////////////*/
 
