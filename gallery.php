@@ -55,7 +55,7 @@ $result = mysqli_query($db, $query);
             <div class="line"></div>
         </div>
         <div class="post-bt">
-            <a href="post.html"><i class="fas fa-plus"></i>&nbsp Post new image</a>
+            <a href="post.php"><i class="fas fa-plus"></i>&nbsp Post new image</a>
         </div>
         <ul class="nav-links">
             <li><a href="#"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
@@ -79,7 +79,7 @@ $result = mysqli_query($db, $query);
 
     <nav class="gal-nav">
 
-        <div id="gal-search" >
+        <div id="gal-search">
             <input type="text" <?php addSearch() ?> name="gal-search" placeholder="Search title or start with # to search tag">
             <div class="button-holder">
                 <button id='gal-clear-bt'><i class="fas fa-times"></i></button>
@@ -113,12 +113,21 @@ $result = mysqli_query($db, $query);
             //echo "id: " . $row["Img_id"] . " - path Name: " . $row["Img_file_name"] . "<br>";
 
         ?>
-            <div class="img_box" <?php echo'data-user= "' . $user . '" data-img= "' . $id .'"'?>>
+            <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
                 <img src=<?php echo "'" . $path . "'" ?>>
                 <div class="pic-edit-picker">
-                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" ?>></span>
-                    <span><img src="/images/img1-edits/img (1)-a.jpg"></span>
+                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" . "data-img= '" . $id . "'" ?>></span>
 
+                    <?php
+                    //returns list of edits of the image
+                    $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND img_edit.edit_id=$id";
+                    $edit_result = mysqli_query($db, $query);
+                    while ($edit_row = mysqli_fetch_assoc($edit_result)) {
+                        $edit_id = $edit_row["Img_id"];
+                        $edit_path = $edit_row["Img_file_name"];
+                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
+                    }
+                    ?>
 
                 </div>
                 <div class="pic-control-bar">

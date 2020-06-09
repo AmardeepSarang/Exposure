@@ -122,11 +122,25 @@ if ($error != null) {
 
             ?>
                 <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
-                    <img src=<?php echo "'" . $path . "'" ?>>
-                    <div class="pic-edit-picker">
-                        <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" ?>></span>
-                        <span><img src="/images/img1-edits/img (1)-a.jpg"></span>
-                    </div>
+                <img src=<?php echo "'" . $path . "'" ?>>
+                <div class="pic-edit-picker">
+                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'"."data-img= '".$id."'" ?>></span>
+
+                    <?php
+                    //returns list of edits of the image
+                    $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND 
+                    (img_edit.edit_id=$id OR 
+                     (img_edit.edit_id=
+                     (SELECT img_edit.edit_id FROM img_edit WHERE img_edit.img_id=$id) AND img_edit.img_id != $id ) )";
+                    $edit_result = mysqli_query($db, $query);
+                    while ($edit_row = mysqli_fetch_assoc($edit_result)) {
+                        $edit_id = $edit_row["Img_id"];
+                        $edit_path = $edit_row["Img_file_name"];
+                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
+                    }
+                    ?>
+
+                </div>
 
                     <div class="pic-control-bar">
                         <span><?php addLike($db, $user, $id) ?></span>
@@ -167,12 +181,25 @@ if ($error != null) {
 
             ?>
                 <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
-                    <img src=<?php echo "'" . $path . "'" ?>>
-                    <div class="pic-edit-picker">
-                        <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" ?>></span>
-                        <span><img src="/images/img1-edits/img (1)-a.jpg"></span>
-                    </div>
+                <img src=<?php echo "'" . $path . "'" ?>>
+                <div class="pic-edit-picker">
+                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'"."data-img= '".$id."'" ?>></span>
 
+                    <?php
+                    //returns list of edits of the image
+                    $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND 
+                    (img_edit.edit_id=$id OR 
+                     (img_edit.edit_id=
+                     (SELECT img_edit.edit_id FROM img_edit WHERE img_edit.img_id=$id) AND img_edit.img_id != $id ) )";
+                    $edit_result = mysqli_query($db, $query);
+                    while ($edit_row = mysqli_fetch_assoc($edit_result)) {
+                        $edit_id = $edit_row["Img_id"];
+                        $edit_path = $edit_row["Img_file_name"];
+                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
+                    }
+                    ?>
+
+                </div>
                     <div class="pic-control-bar">
                         <span><?php addLike($db, $user, $id) ?></span>
                         <span><button><i class="fas fa-plus-square"></i></button></span>
@@ -213,11 +240,25 @@ if ($error != null) {
 
             ?>
                 <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
-                    <img src=<?php echo "'" . $path . "'" ?>>
-                    <div class="pic-edit-picker">
-                        <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" ?>></span>
-                        <span><img src="/images/img1-edits/img (1)-a.jpg"></span>
-                    </div>
+                <img src=<?php echo "'" . $path . "'" ?>>
+                <div class="pic-edit-picker">
+                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'"."data-img= '".$id."'" ?>></span>
+
+                    <?php
+                    //returns list of edits of the image
+                    $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND 
+                    (img_edit.edit_id=$id OR 
+                     (img_edit.edit_id=
+                     (SELECT img_edit.edit_id FROM img_edit WHERE img_edit.img_id=$id) AND img_edit.img_id != $id ) )";
+                    $edit_result = mysqli_query($db, $query);
+                    while ($edit_row = mysqli_fetch_assoc($edit_result)) {
+                        $edit_id = $edit_row["Img_id"];
+                        $edit_path = $edit_row["Img_file_name"];
+                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
+                    }
+                    ?>
+
+                </div>
 
                     <div class="pic-control-bar">
                         <span><?php addLike($db, $user, $id) ?></span>

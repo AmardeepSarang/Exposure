@@ -21,19 +21,22 @@ $(".edit-sl-bn").click(function () {
 
 //image
 mainSrc = "";
+mainId=""
 $(".pic-edit-picker span img").hover(
     function () {
         //hover in
         var mainImg = $(this).parent().parent().parent().children('img')
         mainSrc = mainImg.attr('src')//store the src of the main image
-
-
+        mainId = mainImg.attr('data-img')
         mainImg.attr('src', $(this).attr('src'));//swap to image
+        mainImg.parent().attr('data-img', $(this).attr('data-img'));
     }, function () {
-        //hover out, change back to origina;
+        //hover out, change back to original
         var mainImg = $(this).parent().parent().parent().children('img')
         var editBar = $(this).parent().parent().parent().children('.pic-edit-picker')
         mainImg.attr('src', mainSrc)
+        mainImg.parent().attr('data-img', mainId)
+
         setActive(editBar, mainSrc)
     }
 );
@@ -43,6 +46,7 @@ $(".pic-edit-picker span img").click(
         //permanently change the main image to the new edit
         var mainImg = $(this).parent().parent().parent().children('img')
         mainSrc = mainImg.attr('src')
+        mainId = mainImg.parent().attr('data-img')
 
     }
 );
@@ -61,6 +65,17 @@ function getSrcList(editBar) {
 
     return srcList;
 }
+function getIdList(editBar) {
+    var idList = new Array();
+    $(editBar).children('span').each(function () {
+
+        var imgid = $(this).children('img').attr('data-img');
+        //console.log(imgsrc);
+        idList.push(imgid);
+    });
+
+    return idList;
+}
 function arrowClickHandle(target, direction) {
     //get main image and edit bar objects
     var mainImg = $(target).parent().parent().parent().children('img')
@@ -68,6 +83,7 @@ function arrowClickHandle(target, direction) {
     var editBar = $(target).parent().parent().parent().children('.pic-edit-picker')
     //get the src path for all edits in the bar
     var srcList = getSrcList(editBar);
+    var idList = getIdList(editBar);
     //find current place in list
     var i = srcList.indexOf(src)
 
@@ -85,6 +101,7 @@ function arrowClickHandle(target, direction) {
     }
     //assign new image to main image
     mainImg.attr('src', srcList[i])
+    mainImg.parent().attr('data-img', idList[i])
     setActive(editBar, srcList[i])
 }
 $(".edit-sl-arw-r").click(function () { arrowClickHandle(this, 'r') }
