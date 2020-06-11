@@ -28,7 +28,17 @@ if ($insert==1) {
 	else {
 		echo json_encode(array("statusCode"=>201));
 	}
-}else{
+}else if ($insert==2){
+	//use for checking if like exists
+	$sql = "SELECT * FROM `likes` WHERE user_id=$user AND img_id=$img";
+	$result=mysqli_query($db, $sql);
+	if (mysqli_num_rows($result) > 0) {
+		echo json_encode(array("statusCode"=>200));
+	} 
+	else {
+		echo json_encode(array("statusCode"=>201));
+	}
+} else{
     $sql = "DELETE FROM `likes` WHERE `likes`.`user_id` = '$user' AND `likes`.`img_id` = '$img'";
 	if (mysqli_query($db, $sql)) {
 		echo json_encode(array("statusCode"=>200));

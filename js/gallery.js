@@ -21,7 +21,7 @@ $(".edit-sl-bn").click(function () {
 
 //image
 mainSrc = "";
-mainId=""
+mainId = ""
 $(".pic-edit-picker span img").hover(
     function () {
         //hover in
@@ -38,6 +38,9 @@ $(".pic-edit-picker span img").hover(
         mainImg.parent().attr('data-img', mainId)
 
         setActive(editBar, mainSrc)
+      
+    var btn=$(mainImg).parent().find(".like-bt")
+    checkLike(btn)
     }
 );
 
@@ -103,6 +106,11 @@ function arrowClickHandle(target, direction) {
     mainImg.attr('src', srcList[i])
     mainImg.parent().attr('data-img', idList[i])
     setActive(editBar, srcList[i])
+
+    //reset like btn
+    var temp = $(target).parent().parent().parent()    
+    var btn=$(temp).find(".like-bt")
+    checkLike(btn)
 }
 $(".edit-sl-arw-r").click(function () { arrowClickHandle(this, 'r') }
 );
@@ -181,19 +189,60 @@ $("#gal-clear-bt").click(function () {
 /////////////////////////////////////////////////////////////////////
 ///script for like bt
 ///////////////////////////////////////////////////////////////////// 
+
+function checkLike(btn) {
+    //change like btn based on like exits
+    var icon = $(btn).children("i")
+    var user = $(btn).parent().parent().parent().attr("data-user")
+    var img = $(btn).parent().parent().parent().attr("data-img")
+    // remove like to db
+    $.ajax({
+        url: "like.php",
+        type: "POST",
+        data: {
+            user: user,
+            img: img,
+            insert: 2
+        },
+        cache: false,
+        success: function (dataResult) {
+            
+            var dataResult = JSON.parse(dataResult);
+            if (dataResult.statusCode == 200) {
+                //toggle on like
+                btn.addClass("like-color")//change color
+
+                //make icon  solid
+                icon.removeClass("far")
+                icon.addClass("fas")
+
+            }
+            else if (dataResult.statusCode == 201) {
+                //toggle off like
+                btn.removeClass("like-color")//change color
+
+                //make icon not solid
+                icon.removeClass("fas")
+                icon.addClass("far")
+            }
+
+        }
+    });
+
+}
 $(".like-bt").click(function () {
     var icon = $(this).children("i")
     var user = $(this).parent().parent().parent().attr("data-user")
     var img = $(this).parent().parent().parent().attr("data-img")
-    var btn=$(this);
-    console.log(user)    
+    var btn = $(this);
+    console.log(user)
     console.log(img)
     if (user != -1) {
 
         if (btn.hasClass("like-color")) {
 
             console.log("remove")
-    
+
             // remove like to db
             $.ajax({
                 url: "like.php",
