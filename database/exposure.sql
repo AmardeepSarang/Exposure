@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2020 at 07:33 PM
+-- Generation Time: Jun 13, 2020 at 01:27 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -45,18 +45,23 @@ CREATE TABLE `image` (
 
 INSERT INTO `image` (`Img_id`, `title`, `Img_file_name`, `edited_by`, `uploaded_by`, `is_original`, `uploaded_on`, `description`) VALUES
 (23, 'Model x', 'images/uploads/5ed1435ca49fa8.44580793.jpg', NULL, 1, 1, '2020-05-29 17:16:12', ''),
-(24, 'Cyber truck', 'images/uploads/5ed143afd76666.82875712.jpg', NULL, 1, 1, '2020-05-29 17:17:35', ''),
+(24, 'Cyber truck', 'images/uploads/5ed143afd76666.82875712.jpg', NULL, 111, 1, '2020-05-29 17:17:35', ''),
 (25, 'Taycan', 'images/uploads/5ed14435edd036.40864098.jpg', NULL, 1, 1, '2020-05-29 17:19:49', ''),
-(26, '2020 roadster', 'images/uploads/5ed1448293f690.80269394.jpg', NULL, 1, 1, '2020-05-29 17:21:06', 'This is now the 2020 roadster'),
+(26, '2020 roadster', 'images/uploads/5ed1448293f690.80269394.jpg', NULL, 111, 1, '2020-05-29 17:21:06', 'This is now the 2020 roadster'),
 (27, 'Spring flowers', 'images/uploads/5ed1452c43c853.96634563.jpg', NULL, 1, 1, '2020-05-29 17:23:56', ''),
-(29, 'Snowy deck', 'images/uploads/5ed145dc907ae8.00005530.jpg', NULL, 1, 1, '2020-05-29 17:26:52', ''),
+(29, 'Snowy deck', 'images/uploads/5ed145dc907ae8.00005530.jpg', NULL, 121, 1, '2020-05-29 17:26:52', ''),
 (30, 'statue of liberty', 'images/uploads/5ed14682810b37.81820983.jpg', NULL, 1, 1, '2020-05-29 17:29:38', ''),
 (31, 'NYC river', 'images/uploads/5ed146eff3ab12.51888869.jpg', NULL, 1, 1, '2020-05-29 17:31:28', 'Some random buildings in NYC '),
-(32, 'NYC beach', 'images/uploads/5ed14723cfb224.86299059.jpg', NULL, 1, 1, '2020-05-29 17:32:19', ''),
-(33, 'Deck with sun', 'images/uploads/5ed147b4475bb2.67805968.jpg', NULL, 1, 1, '2020-05-29 17:34:44', 'A crisp spring day'),
-(34, 'A very snowy deck', 'images/uploads/5ed147df90fd17.72928725.jpg', NULL, 1, 1, '2020-05-29 17:35:27', ''),
+(32, 'NYC beach', 'images/uploads/5ed14723cfb224.86299059.jpg', NULL, 111, 1, '2020-05-29 17:32:19', ''),
+(33, 'Deck with sun', 'images/uploads/5ed147b4475bb2.67805968.jpg', NULL, 111, 1, '2020-05-29 17:34:44', 'A crisp spring day'),
+(34, 'A very snowy deck', 'images/uploads/5ed147df90fd17.72928725.jpg', NULL, 1111, 1, '2020-05-29 17:35:27', ''),
 (35, 'Fall deck', 'images/uploads/5ed14812cdb590.67982398.jpg', NULL, 1, 1, '2020-05-29 17:36:18', ''),
-(36, 'Ducks!', 'images/uploads/5ed148547e3f81.20729285.jpg', NULL, 1, 1, '2020-05-29 17:37:24', '');
+(36, 'Ducks!', 'images/uploads/5ed148547e3f81.20729285.jpg', NULL, 1, 1, '2020-05-29 17:37:24', ''),
+(37, 'Taycan', 'images/uploads/5ede786974b6b5.30293276.jpg', 111, 1, 0, '2020-06-08 17:42:01', ''),
+(38, '2020 roadster', 'images/uploads/5edfac36a52832.43986421.jpg', 111, 111, 0, '2020-06-09 15:35:18', 'This is now the 2020 roadster'),
+(39, '2020 roadster edit 2', 'images/uploads/5edfac9cd981a9.79026823.jpg', 111, 111, 0, '2020-06-09 15:37:00', 'This is now the 2020 roadster'),
+(40, '2020 roadster edit 3', 'images/uploads/5edfacc3d4c6e8.04694447.jpg', 111, 111, 0, '2020-06-09 15:37:39', 'This is now the 2020 roadster'),
+(41, '2020 roadster edit 4', 'images/uploads/5edface25dda86.46217035.jpg', 111, 111, 0, '2020-06-09 15:38:10', 'This is now the 2020 roadster');
 
 -- --------------------------------------------------------
 
@@ -68,6 +73,18 @@ CREATE TABLE `img_edit` (
   `img_id` int(11) NOT NULL,
   `edit_id` int(11) NOT NULL COMMENT 'Another img_id '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `img_edit`
+--
+
+INSERT INTO `img_edit` (`img_id`, `edit_id`) VALUES
+(1, 6),
+(37, 25),
+(38, 26),
+(39, 26),
+(40, 26),
+(41, 26);
 
 -- --------------------------------------------------------
 
@@ -141,7 +158,27 @@ INSERT INTO `img_tag` (`img_id`, `tag_id`) VALUES
 (35, 24),
 (35, 33),
 (36, 22),
-(36, 34);
+(36, 34),
+(37, 15),
+(37, 18),
+(37, 20),
+(37, 35),
+(38, 15),
+(38, 16),
+(38, 18),
+(38, 35),
+(39, 15),
+(39, 16),
+(39, 18),
+(39, 35),
+(40, 15),
+(40, 16),
+(40, 18),
+(40, 35),
+(41, 15),
+(41, 16),
+(41, 18),
+(41, 35);
 
 -- --------------------------------------------------------
 
@@ -160,9 +197,17 @@ CREATE TABLE `likes` (
 
 INSERT INTO `likes` (`user_id`, `img_id`) VALUES
 (76, 23),
-(111, 23),
+(111, 0),
+(111, 24),
+(111, 26),
+(111, 27),
 (111, 30),
 (111, 31),
+(111, 32),
+(111, 36),
+(111, 39),
+(111, 40),
+(121, 25),
 (157, 23);
 
 -- --------------------------------------------------------
@@ -181,6 +226,7 @@ CREATE TABLE `tag` (
 --
 
 INSERT INTO `tag` (`tag_id`, `tag_name`) VALUES
+(35, ''),
 (29, 'beach'),
 (15, 'car'),
 (14, 'cars'),
@@ -221,6 +267,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `email`, `name`, `password`) VALUES
+(111, 'fake', 'Test McTester', 'hjhbnjhn');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -229,6 +282,12 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`Img_id`);
+
+--
+-- Indexes for table `img_edit`
+--
+ALTER TABLE `img_edit`
+  ADD PRIMARY KEY (`img_id`,`edit_id`);
 
 --
 -- Indexes for table `img_tag`
@@ -264,19 +323,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `Img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `Img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
