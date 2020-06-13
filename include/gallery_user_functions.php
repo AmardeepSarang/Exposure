@@ -79,6 +79,7 @@ function genSQL()
     $orderSQL = "";
     $fromSQL = "";
     $isLikeSearch = false;
+
     if (isset($_GET['sort'])) {
         //create the first section of the sql based on what to sort by
         $sort = $_GET['sort'];
@@ -92,7 +93,10 @@ function genSQL()
             $fromSQL = "FROM `image`";
             $orderSQL = "ORDER BY `like_count`";
         } else if (strcmp($sort, "edits") == 0) {
-            //do later
+            $isLikeSearch = true;
+            $selectSQL = "SELECT image.`Img_id`,`title`,`Img_file_name`, (SELECT COUNT(*) FROM img_edit WHERE image.Img_id=img_edit.edit_id) AS edit_count";
+            $fromSQL = "FROM `image`";
+            $orderSQL = "ORDER BY `edit_count`";
         } else {
             //select date by default
             $selectSQL = "SELECT *";
@@ -125,6 +129,7 @@ function genSQL()
         }
     }
     $isLikeSearch = false;
+    
 
     $sortSQL = "";
     if (isset($_GET['order'])) {
