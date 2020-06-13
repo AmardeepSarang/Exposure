@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sigunp</title>
     <link href="css/style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/57c4c79ee8.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
@@ -14,23 +14,25 @@
 </head>
 
 <body>
+
     <div class="form-box">
         <form action="upload.php" method="POST" enctype="multipart/form-data">
             <div class="image-preview">
                 <img src="images/logo.png" alt="">
 
             </div>
-            <div>
-                <h1>Welcome back to Exposure!</h1>
-            </div>
+            <div >Name:<input type="text" name="title" placeholder="Enter name"></div>
+
             <div>
                 Email:<br> <input type="text" name="emal" placeholder="Enter email">
             </div>
             <div>
                 Password:<input type="password" name="Password" placeholder="Enter Password">
             </div>
+            <div>
+                Confirm Password:<input type="password" name="confirm-password" placeholder="Enter Password">
+            </div>
         
-            <button type="submit" name="submit">Log in</button>
             <button type="submit" name="submit">Sign up</button>
         </form>
     </div>
