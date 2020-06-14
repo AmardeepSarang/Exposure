@@ -575,7 +575,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     height: 160px; 
   }
 
-.form-box form button, #upload-con{
+.form-box form button, .form-box button, #upload-con {
   background-color: #ee6352;
   border: none;
   width: 100%;
@@ -583,13 +583,14 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   transition: background-color 0.2s linear;
 }
 
-.form-box form button{
+
+.form-box form button, .form-box button{
   font-size: 16pt;
   font-family: 'Permanent Marker', cursive;
   color: #f6f4f3;
 }
 
-.form-box form button:hover{
+.form-box form button:hover, .form-box button:hover{
   background-color:#f6f4f3;
   color: #ee6352;
   transition: background-color 0.2s linear;
