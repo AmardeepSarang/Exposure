@@ -99,5 +99,5 @@ if ($hasError) {
 }
 
     ?>
-    <button id="upload-con" onclick="window.location.href='login.html';">Continue</button>
+    <button id="upload-con" onclick="window.location.href='login.php';">Continue</button>
 </div>
