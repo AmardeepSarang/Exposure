@@ -2,9 +2,10 @@
 session_start();
 include_once 'include/config.php';
 include_once 'include/gallery_user_functions.php';
+include_once 'include/getuser.php';
 
-//get user (temp just set it)
-$user = 111;
+//get user
+$user = getSessionUser();
 
 
 // Connect to MySQL

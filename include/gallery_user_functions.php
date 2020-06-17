@@ -146,7 +146,7 @@ function genSQL()
         $sortSQL = " DESC";
     }
     $sql = $selectSQL . " " . $fromSQL . " " . $whereSQL . " " . $orderSQL . " " . $sortSQL;
-    echo $sql;
+  //  echo $sql;
     return $sql;
 }
 

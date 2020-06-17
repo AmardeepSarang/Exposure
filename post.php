@@ -1,5 +1,9 @@
 <?php
 include_once 'include/config.php';
+include_once 'include/getuser.php';
+session_start();
+//check if loged in 
+getSessionUser();
 //check if this is an original post or an edited image post
 $edit_of = -1;
 $db = "";

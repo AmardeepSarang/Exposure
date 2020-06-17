@@ -8,6 +8,8 @@
 <?php
 session_start();
 include_once 'include/config.php';
+include_once 'include/getuser.php';
+
 function uploadFile($file)
 {
     //upload image to upload folder and return new file path
@@ -175,7 +177,7 @@ function insertImgedit($db, $imgId, $orgId)
         }
 
         //insert imag
-        $user = 111;
+        $user = getSessionUser();
 
 
         $edit_of = -1;
