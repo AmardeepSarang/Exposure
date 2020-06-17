@@ -57,13 +57,13 @@ if ($error != null) {
             <div class="line"></div>
         </div>
         <div class="post-bt">
-            <a href="#"><i class="fas fa-plus"></i>&nbsp Post new image</a>
+            <a href="post.php"><i class="fas fa-plus"></i>&nbsp Post new image</a>
         </div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
-            <li><a href="#"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
-            <li><a href="#"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
+            <li><a href="gallery.php"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
+            <li><a href="user.php"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
+            <li><a href="about.html"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
         </ul>
     </nav>
 
