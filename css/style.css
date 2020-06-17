@@ -604,7 +604,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 
  /* Detail Page */
   /*/////////////////////////////////////////////////////////////////////*/
-  #detail-box{
+  .detail-box{
     width: 460px;
     height: 620px;
     background: #2f2f2f;
@@ -619,7 +619,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     padding: 10px 0px;
   }
   
-  #detail-box h1{
+  .detail-box h1{
     font-family: 'Permanent Marker', cursive;
     margin: 0;
     padding-left: 12px;
@@ -628,7 +628,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 
   }
   
-  #detail-box h2{
+  .detail-box h2{
     font-family: 'Permanent Marker', cursive;
     margin: 0;
     text-align: left;
@@ -636,7 +636,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     font-size: 13px;
   }
   
-  #detail-box h3{
+  .detail-box h3{
     font-family: 'Permanent Marker', cursive;
     margin: 0;
     text-align: left;
@@ -644,7 +644,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     font-size: 18px;
   }
 
-  #detail-box h4{
+  .detail-box h4{
     font-family: 'Permanent Marker', cursive;
     margin: 0;
     text-align: left;
@@ -653,7 +653,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   }
   
 
-  #detail-box input[type="submit"]
+  .detail-box input[type="submit"]
   {
     font-family: 'Permanent Marker', cursive;
     font-size: 15pt;
@@ -664,5 +664,27 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     left: auto;
     margin-left:-30;
   }
+
+
+  .column{
+    float: left;
+    padding: 10px;
+    height: 400px; 
+  }
+  
+  .left {
+    width: 50%;
+  }
+  
+  .right {
+    width: 30%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+
   /*/////////////////////////////////////////////////////////////////////////*/
   
