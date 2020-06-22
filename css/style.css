@@ -697,3 +697,24 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     margin: 5%;
     font-family: 'Lato', sans-serif;
   }
+
+
+  /*/////////////////////////////////////////////////////////////////////////*/
+
+  .user-settings .sidebar{
+    position: fixed;
+    width: 350px;
+    height: 100%;
+    background: #ee6352;
+  }
+
+  .user-settings .sidebar h2{
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .user-settings .sidebar ul li{
+    padding: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
