@@ -1,0 +1,25 @@
+About Exposure
+What is Exposure?
+Exposure is an image sharing website targeted at people who enjoy creative and inspiring photography as well as people who have a passion for editing such photos. What sets as apart from other image sharing websites like Instagram and flicker is the fact that we allow and encourage users to edit photos that other users have posted. This creates a creative environment that matches passionate editors with passionate photographers. We achieve this environment with our innovative tools and features that allow users to see and switch between different edited versions of the same image and see information about who edited and posted it. Exposure also features a robust web-based editor and ability to download images and reupload it after using your favorite image editor. 
+
+
+When was it made?
+Exposure began development in the summer of 2020 it was started by a pair of computer science students to during the COVID-19 pandemic lockdown to improve their web development skills and to pass to time in a productive manner.
+
+Who made it?
+Exposure was started by two friends, Jerin and Amar, who were both  computer science students who wanted to improve their web development skills and gain experience in creating a large scale software project. 
+
+Meet the current Exposure team:
+Amardeep Sarang
+Role: developer, system administrator, … and basically everything else 
+Summary: Hi I’m Amar! I’m a 4th year university student pursuing a BSc computer science degree at Wilfrid Laurier university. My fields of interests in computer science include the fields of AI, machine learning, data science and web development. I’m also an avid PC gamer, car fanatic, tech enthusiast, and I enjoy chilling while watching videos about all these things on YouTube.
+
+Jerin Koshy 
+Role: developer, system administrator, … and basically everything else 
+Summary: Placeholder
+
+How to use (user guide)?
+TBD when the site is more complete
+
+
+
