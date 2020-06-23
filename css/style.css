@@ -697,8 +697,63 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     margin: 5%;
     font-family: 'Lato', sans-serif;
   }
+  .about-body h1{
+    font-family: 'Permanent Marker', cursive;
+    color: #2f357d;
+    text-align: center;
+    font-size: 30pt;
+    margin-bottom: 35px;
 
+  }
+  .about-body section{
+    margin-bottom: 30px;
+  }
 
+  .about-body section h2{
+    font-family: 'Permanent Marker', cursive;
+    color: #ee6352;
+    margin-bottom: 5px;
+  }
+  .about-body section h3{
+    font-family: 'Permanent Marker', cursive;
+    color: #ee6352;
+    font-size: 18pt;
+    text-align: center;
+  }
+.team-pic{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+.team-box{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.team-mem-name{
+  text-align: center;
+  color: #2f357d;
+  font-size: 125%;
+  margin-bottom: 0px;
+}
+.team-sco-links{
+  text-align: center;
+  font-size: 30px;
+}
+.team-sco-links span{
+  margin: 15px;
+}
+.roles{
+  text-align: center;
+  font-size: 90%;
+  margin-top: 4px;
+}
+.member-box{
+  border-radius: 50px;
+  margin: 10px;
+  padding: 15px;
+  
+}
   /*/////////////////////////////////////////////////////////////////////////*/
 
   .user-settings .sidebar{
