@@ -1,10 +1,17 @@
 /*https://coolors.co/ee6352-292f36-2f357d-f6f4f3-787776*/
-html, body{min-height:100%;}
+html, body{
+  margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+}
 
 body{
     background: #f6f4f3;
     font: 12pt;
-    margin: 0px;
+    font-family: 'Lato', sans-serif;
     height: 100vh;
 }
 /*
@@ -45,6 +52,7 @@ Main nav bar
   background-color: #f6f4f3;
 }
 .nav-links {
+  margin-top: 0px;
   display: flex;
   list-style: none;
   width: 50%;
