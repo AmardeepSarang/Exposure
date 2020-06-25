@@ -183,7 +183,7 @@ Gallery nav and search
 }
 
 .gal-nav  select{
-    border-radius: 20px;
+    border-radius: 40px;
     border-color: #2f357d;
     font-size: 12pt;
     background-color: #ee6352;
@@ -198,37 +198,51 @@ Gallery nav and search
     background-color: #ee6352;
     border-width:3px;
     padding: 7px;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     padding-left: 20px;
     color: white;
+    overflow: hidden;
 }
 
 #gal-search input{
   font-size: 12pt;
-  width: 80%;
+  width: 75%;
   height: 90%;
   background-color: inherit;
   border: none;
   color:white;
 }
+#gal-search input:focus{
+outline: none;
+}
+.gal-nav .button-holder{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  float: right;
+  background-color: #2f357d;
+  height: 100%;
+  position: relative;
+
+}
 #gal-search .button-holder button{
   background-color: inherit;
   padding: 5px;
   border: none;
-  color: #2f357d;
-  border-left: 0.5px solid #2f357d;
+  color: #f6f4f3;
   padding-left: 10px;
   transition: background-color 0.25s;
+
+  
 }
 
 #gal-search .button-holder button:hover{
  background-color: #f6f4f3;
- border: 0.5px solid #2f357d;
- border-radius: 50px
+ color: #2f357d;
 }
-.gal-nav .button-holder{
-    display: inline-block;
-    float: right;
-}
+
 /*
 ///////////////////////////////////////////////
 Gallery images and controls
@@ -358,6 +372,9 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   border: none;
   color: #ee6352;
 
+}
+.gal-full-view button:hover{
+  color: #f6f4f3;
 }
 .gal-full-view img{
   max-width: 93%;

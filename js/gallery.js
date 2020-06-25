@@ -151,7 +151,16 @@ $('.fullscreen-close-bt').click(function () {
     $('.gal-full-view').removeClass('gal-full-view-show')
 });
 
+$(document).mouseup(function(e) 
+{
+    var container = $(".gal-full-view");
 
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.removeClass('gal-full-view-show')
+    }
+});
 
 //////////////////////////////////////////////////////
 // Script for sorting and search
