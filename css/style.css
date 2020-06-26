@@ -813,4 +813,54 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     border-radius: 25px;
   }
 
+  .user-settings .settings{
+    width: 79%;
+    margin-left: 450px;
+  }
+
+  .user-settings .settings .header{
+    padding: 30px;
+    background: #ffff;
+    font-size: 35px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    color: #13163d;
+    
+  }
+
+  .user-settings .settings .info{
+    padding: 30px;
+    line-height: 20px; 
+    align-items: center;
+  }
+
+  .user-settings .settings .info input[type="text"]{
+    width:1300px;
+    color: #ffff;
+    padding-left: 25px ;
+    height: 40px;
+    border: 5px solid #ee6352;
+    background: #292f36;
+  }
+
+  .user-settings .settings .info input[type="password"]{
+    width:1300px;
+    color: #ffff;
+    padding-left: 25px ;
+    height: 40px;
+    border: 5px solid #ee6352;
+    background: #292f36;
+  }
+
+  .user-settings .settings .info button[type="submit"]{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 15pt;
+    width: 300px;
+    height: 50px;
+    border: none;
+    background: #ee6352;
+    left: auto;
+    margin-left:-30;
+}
+
   /*////////////////////////////////////////////////////////////////////////*/
