@@ -105,7 +105,12 @@ $result = mysqli_query($db, $query);
     <!--
         Gallery 
     -->
-    <div class="gallery_container">
+    <div class="grid">
+               <!-- columns -->
+  <div class="grid-col grid-col--1"></div>
+  <div class="grid-col grid-col--2"></div>
+  <div class="grid-col grid-col--3"></div>
+  <div class="grid-col grid-col--4"></div>
         <?php
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -113,11 +118,17 @@ $result = mysqli_query($db, $query);
             //$row = mysqli_fetch_assoc($result);
             $id = $row["Img_id"];
             $path = $row["Img_file_name"];
+            $title=$row['title']
             //echo "id: " . $row["Img_id"] . " - path Name: " . $row["Img_file_name"] . "<br>";
 
         ?>
+        <div class="grid-item">
             <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
-                <img src=<?php echo "'" . $path . "'" ?>>
+            <div class="img_box_header">
+            <h1 ><?php echo $title ?></h1>
+        
+            </div>   
+            <img src=<?php echo "'" . $path . "'" ?>>
                 <div class="pic-edit-picker">
                     <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" . "data-img= '" . $id . "'" ?>></span>
 
@@ -143,12 +154,18 @@ $result = mysqli_query($db, $query);
                     <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
                 </div>
             </div>
-
+        </div>
         <?php } ?>
 
     </div>
     <script src="js/nav.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/gallery.js"></script>
-
+    <script src="https://unpkg.com/colcade@0/colcade.js"></script>
+<script>
+    $('.grid').colcade({
+  columns: '.grid-col',
+  items: '.grid-item'
+})
+</script>
 </body>

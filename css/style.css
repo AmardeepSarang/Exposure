@@ -255,7 +255,7 @@ background: linear-gradient(0deg, rgba(245,146,134,0.7898688580482416) 0%, rgba(
   position: relative;
     /* Full height */
     height: 100%;
-  
+    margin: 5px;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -864,3 +864,52 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 }
 
   /*////////////////////////////////////////////////////////////////////////*/
+
+  /*
+  gallery test
+  */
+ /* Using floats */
+ .grid{
+   width: 95%;
+   margin: 0 auto;
+ }
+.grid-col {
+  float: left;
+  width: 100%;
+}
+
+/* 2 columns by default, hide columns 2 & 3 */
+.grid-col--2,.grid-col--4, .grid-col--3 { display: none }
+/* 3 columns at medium size */
+@media ( min-width: 380px ) {
+  .grid-col { width: 50%; }
+  .grid-col--4 { display: block; } /* show column 4 */
+}
+/* 3 columns at medium size */
+@media ( min-width: 768px ) {
+  .grid-col { width: 33.333%; }
+  .grid-col--2 { display: block; } /* show column 2 */
+}
+
+/* 4 columns at large size */
+@media ( min-width: 1080px ) {
+  .grid-col { width: 25%; }
+  .grid-col--3 { display: block; } /* show column 3 */
+}
+
+.img_box_header{
+  position: absolute;
+    color: #2f357d;
+    margin-top: 1em;
+    margin-left: 0.5em;
+
+}
+
+.img_box_header h1{
+  font-size: 16px;
+  background-color: #f6f4f3;
+  padding: 5px;
+  opacity: 0.6;
+  border-radius: 20px;
+  margin-bottom: 1px;
+}
