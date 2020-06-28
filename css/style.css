@@ -281,7 +281,8 @@ img {
     background-color: #f6f4f3;
     position: absolute;
     width: 80%;
-    left: 10%;
+    min-width: 240px;
+    left: 0.5em;
     bottom: 10%;
     border-radius: 20px;
     color: #2f357d;
@@ -290,19 +291,20 @@ img {
   }
   .pic-control-bar span{
     padding: 5px;
+    border-radius: 10px;
   }
   
   .pic-control-bar span button{
     /*color: inherit;*/
     border: none;
-    transition: background-color 0.5s;
-    border-radius: 30px;
+    transition: background-color 0.5s
   }
   .like-color{
     color: #f7432d;
   }
   .pic-control-bar span button:hover{
-    background-color: #ee6352;
+    background-color: #2f357d;
+    color: #f6f4f3;
   }
   
   
@@ -314,8 +316,9 @@ img {
     background-color: #f6f4f3;
     position: absolute;
     width: 90%;
+    max-width: 240px;
     height: 70px;
-    left: 5%;
+    left: 0.5em;
     top: 10%;
     border-radius: 20px;
     opacity: 0;
@@ -866,7 +869,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   /*////////////////////////////////////////////////////////////////////////*/
 
   /*
-  gallery test
+  gallery new layout
   */
  /* Using floats */
  .grid{
@@ -886,7 +889,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   .grid-col--4 { display: block; } /* show column 4 */
 }
 /* 3 columns at medium size */
-@media ( min-width: 768px ) {
+@media ( min-width: 885px ) {
   .grid-col { width: 33.333%; }
   .grid-col--2 { display: block; } /* show column 2 */
 }
