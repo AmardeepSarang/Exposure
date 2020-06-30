@@ -80,7 +80,7 @@ if ($error != null) {
         Start of page content
     -->
     <div class="user-heading user-welcome">
-        <h1>Welcome, <?php getUserName($db,$user) ?>! Take a look at what you have been up to on Exposure</h1>
+        <h1>Welcome, <?php getUserName($db, $user) ?>! Take a look at what you have been up to on Exposure</h1>
     </div>
     <div class="user-heading">
         <button type="button" data-toggle="collapse" data-target="#stat-fold"><i class="fas fa-chevron-circle-down"></i></button>
@@ -108,53 +108,62 @@ if ($error != null) {
     </div>
 
     <div class="fold-con collapse in" id="like-fold">
-        <div class="gallery_container">
+        <div class="grid">
+            <!-- columns -->
+            <div class="grid-col grid-col--1"></div>
+            <div class="grid-col grid-col--2"></div>
+            <div class="grid-col grid-col--3"></div>
+            <div class="grid-col grid-col--4"></div>
             <?php
             $query = "SELECT * FROM image, likes WHERE image.Img_id=likes.img_id AND likes.user_id=$user";
             $result = mysqli_query($db, $query);
-            if (mysqli_num_rows($result)==0) {
+            if (mysqli_num_rows($result) == 0) {
                 echo "<h2 class='fold-empty'>This section is empty, try liking some images! </h2>";
-                }
-    
+            }
             while ($row = mysqli_fetch_assoc($result)) {
                 // output data of each row
                 //$row = mysqli_fetch_assoc($result);
                 $id = $row["Img_id"];
                 $path = $row["Img_file_name"];
+                $title = $row['title']
 
             ?>
-                <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
-                <img src=<?php echo "'" . $path . "'" ?>>
-                <div class="pic-edit-picker">
-                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'"."data-img= '".$id."'" ?>></span>
+                <div class="grid-item">
+                    <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
+                        <div class="img_box_header">
+                            <h1><?php echo $title ?></h1>
 
-                    <?php
-                    //returns list of edits of the image
-                    $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND 
-                    (img_edit.edit_id=$id OR 
-                     (img_edit.edit_id=
-                     (SELECT img_edit.edit_id FROM img_edit WHERE img_edit.img_id=$id) AND img_edit.img_id != $id ) )";
-                    $edit_result = mysqli_query($db, $query);
-                    while ($edit_row = mysqli_fetch_assoc($edit_result)) {
-                        $edit_id = $edit_row["Img_id"];
-                        $edit_path = $edit_row["Img_file_name"];
-                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
-                    }
-                    ?>
+                        </div>
+                        <img src=<?php echo "'" . $path . "'" ?>>
+                        <div class="pic-edit-picker">
+                            <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" . "data-img= '" . $id . "'" . " data-img-title= '" . $title . "'" ?>></span>
 
-                </div>
+                            <?php
+                            //returns list of edits of the image
+                            $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND img_edit.edit_id=$id";
+                            $edit_result = mysqli_query($db, $query);
+                            while ($edit_row = mysqli_fetch_assoc($edit_result)) {
+                                $edit_id = $edit_row["Img_id"];
+                                $edit_title = $edit_row["title"];
+                                $edit_path = $edit_row["Img_file_name"];
+                                echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '" data-img-title= "' . $edit_title . '"></span>';
+                            }
+                            ?>
 
-                    <div class="pic-control-bar">
-                        <span><?php addLike($db, $user, $id) ?></span>
-                        <span><button><i class="fas fa-plus-square"></i></button></span>
-                        <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
-                        <span><button><i class="fas fa-info-circle"></i></button></span>
-                        <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
-                        <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
-                        <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                        </div>
+                        <div class="pic-control-bar">
+                            <span><?php addLike($db, $user, $id) ?></span>
+                            <span><button><i class="fas fa-plus-square"></i></button></span>
+                            <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
+                            <span><button><i class="fas fa-info-circle"></i></button></span>
+                            <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
+                            <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
+                            <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
+
         </div>
     </div>
 
@@ -166,53 +175,63 @@ if ($error != null) {
     </div>
 
     <div class="fold-con collapse" id="edit-fold">
-        <div class="gallery_container">
-        <?php
+        <div class="grid">
+            <!-- columns -->
+            <div class="grid-col grid-col--1"></div>
+            <div class="grid-col grid-col--2"></div>
+            <div class="grid-col grid-col--3"></div>
+            <div class="grid-col grid-col--4"></div>
+            <?php
             $query = "SELECT * FROM `image` WHERE edited_by=$user";
             $result = mysqli_query($db, $query);
 
-            if (mysqli_num_rows($result)==0) {
-            echo "<h2 class='fold-empty'>This section is empty, try editing some images! </h2>";
+            if (mysqli_num_rows($result) == 0) {
+                echo "<h2 class='fold-empty'>This section is empty, try editing some images! </h2>";
             }
-
             while ($row = mysqli_fetch_assoc($result)) {
                 // output data of each row
                 //$row = mysqli_fetch_assoc($result);
                 $id = $row["Img_id"];
                 $path = $row["Img_file_name"];
+                $title = $row['title']
 
             ?>
-                <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
-                <img src=<?php echo "'" . $path . "'" ?>>
-                <div class="pic-edit-picker">
-                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'"."data-img= '".$id."'" ?>></span>
+                <div class="grid-item">
+                    <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
+                        <div class="img_box_header">
+                            <h1><?php echo $title ?></h1>
 
-                    <?php
-                    //returns list of edits of the image
-                    $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND 
-                    (img_edit.edit_id=$id OR 
-                     (img_edit.edit_id=
-                     (SELECT img_edit.edit_id FROM img_edit WHERE img_edit.img_id=$id) AND img_edit.img_id != $id ) )";
-                    $edit_result = mysqli_query($db, $query);
-                    while ($edit_row = mysqli_fetch_assoc($edit_result)) {
-                        $edit_id = $edit_row["Img_id"];
-                        $edit_path = $edit_row["Img_file_name"];
-                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
-                    }
-                    ?>
+                        </div>
+                        <img src=<?php echo "'" . $path . "'" ?>>
+                        <div class="pic-edit-picker">
+                            <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" . "data-img= '" . $id . "'" . " data-img-title= '" . $title . "'" ?>></span>
 
-                </div>
-                    <div class="pic-control-bar">
-                        <span><?php addLike($db, $user, $id) ?></span>
-                        <span><button><i class="fas fa-plus-square"></i></button></span>
-                        <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
-                        <span><button><i class="fas fa-info-circle"></i></button></span>
-                        <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
-                        <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
-                        <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                            <?php
+                            //returns list of edits of the image
+                            $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND img_edit.edit_id=$id";
+                            $edit_result = mysqli_query($db, $query);
+                            while ($edit_row = mysqli_fetch_assoc($edit_result)) {
+                                $edit_id = $edit_row["Img_id"];
+                                $edit_title = $edit_row["title"];
+                                $edit_path = $edit_row["Img_file_name"];
+                                echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '" data-img-title= "' . $edit_title . '"></span>';
+                            }
+                            ?>
+
+                        </div>
+                        <div class="pic-control-bar">
+                            <span><?php addLike($db, $user, $id) ?></span>
+                            <span><button><i class="fas fa-plus-square"></i></button></span>
+                            <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
+                            <span><button><i class="fas fa-info-circle"></i></button></span>
+                            <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
+                            <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
+                            <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
+
         </div>
     </div>
 
@@ -224,55 +243,64 @@ if ($error != null) {
     </div>
 
     <div class="fold-con collapse" id="upload-fold">
-        <div class="gallery_container">
+        <div class="grid">
+            <!-- columns -->
+            <div class="grid-col grid-col--1"></div>
+            <div class="grid-col grid-col--2"></div>
+            <div class="grid-col grid-col--3"></div>
+            <div class="grid-col grid-col--4"></div>
 
-            
-        <?php
+            <?php
             $query = "SELECT * FROM `image` WHERE uploaded_by=$user";
             $result = mysqli_query($db, $query);
-            if (mysqli_num_rows($result)==0) {
+            if (mysqli_num_rows($result) == 0) {
                 echo "<h2 class='fold-empty'>This section is empty, try uploading some images! </h2>";
-                }
-    
+            }
+
             while ($row = mysqli_fetch_assoc($result)) {
                 // output data of each row
                 //$row = mysqli_fetch_assoc($result);
                 $id = $row["Img_id"];
                 $path = $row["Img_file_name"];
+                $title = $row['title']
 
             ?>
-                <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
-                <img src=<?php echo "'" . $path . "'" ?>>
-                <div class="pic-edit-picker">
-                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'"."data-img= '".$id."'" ?>></span>
+                <div class="grid-item">
+                    <div class="img_box" <?php echo 'data-user= "' . $user . '" data-img= "' . $id . '"' ?>>
+                        <div class="img_box_header">
+                            <h1><?php echo $title ?></h1>
 
-                    <?php
-                    //returns list of edits of the image
-                    $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND 
-                    (img_edit.edit_id=$id OR 
-                     (img_edit.edit_id=
-                     (SELECT img_edit.edit_id FROM img_edit WHERE img_edit.img_id=$id) AND img_edit.img_id != $id ) )";
-                    $edit_result = mysqli_query($db, $query);
-                    while ($edit_row = mysqli_fetch_assoc($edit_result)) {
-                        $edit_id = $edit_row["Img_id"];
-                        $edit_path = $edit_row["Img_file_name"];
-                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
-                    }
-                    ?>
+                        </div>
+                        <img src=<?php echo "'" . $path . "'" ?>>
+                        <div class="pic-edit-picker">
+                            <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" . "data-img= '" . $id . "'" . " data-img-title= '" . $title . "'" ?>></span>
 
-                </div>
+                            <?php
+                            //returns list of edits of the image
+                            $query = "SELECT * FROM img_edit, image WHERE img_edit.img_id=image.Img_id AND img_edit.edit_id=$id";
+                            $edit_result = mysqli_query($db, $query);
+                            while ($edit_row = mysqli_fetch_assoc($edit_result)) {
+                                $edit_id = $edit_row["Img_id"];
+                                $edit_title = $edit_row["title"];
+                                $edit_path = $edit_row["Img_file_name"];
+                                echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '" data-img-title= "' . $edit_title . '"></span>';
+                            }
+                            ?>
 
-                    <div class="pic-control-bar">
-                        <span><?php addLike($db, $user, $id) ?></span>
-                        <span><button><i class="fas fa-plus-square"></i></button></span>
-                        <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
-                        <span><button><i class="fas fa-info-circle"></i></button></span>
-                        <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
-                        <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
-                        <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                        </div>
+                        <div class="pic-control-bar">
+                            <span><?php addLike($db, $user, $id) ?></span>
+                            <span><button><i class="fas fa-plus-square"></i></button></span>
+                            <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
+                            <span><button><i class="fas fa-info-circle"></i></button></span>
+                            <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
+                            <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
+                            <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
+
         </div>
     </div>
 
@@ -280,4 +308,11 @@ if ($error != null) {
     <script src="js/nav.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/gallery.js"></script>
+    <script src="https://unpkg.com/colcade@0/colcade.js"></script>
+    <script>
+    $('.grid').colcade({
+  columns: '.grid-col',
+  items: '.grid-item'
+})
+</script>
 </body>

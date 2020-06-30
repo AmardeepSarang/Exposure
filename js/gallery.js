@@ -21,21 +21,27 @@ $(".edit-sl-bn").click(function () {
 
 //image
 mainSrc = "";
-mainId = ""
+mainId = "";
+mainTitle="";
 $(".pic-edit-picker span img").hover(
     function () {
         //hover in
         var mainImg = $(this).parent().parent().parent().children('img')
         mainSrc = mainImg.attr('src')//store the src of the main image
         mainId = mainImg.attr('data-img')
+        mainTitle=mainImg.prev().children("h1").text();
+        
+        //swap image data
         mainImg.attr('src', $(this).attr('src'));//swap to image
         mainImg.parent().attr('data-img', $(this).attr('data-img'));
+        mainImg.prev().children("h1").text($(this).attr('data-img-title'));
     }, function () {
         //hover out, change back to original
         var mainImg = $(this).parent().parent().parent().children('img')
         var editBar = $(this).parent().parent().parent().children('.pic-edit-picker')
         mainImg.attr('src', mainSrc)
         mainImg.parent().attr('data-img', mainId)
+        mainImg.prev().children("h1").text(mainTitle);
 
         setActive(editBar, mainSrc)
       
@@ -50,6 +56,7 @@ $(".pic-edit-picker span img").click(
         var mainImg = $(this).parent().parent().parent().children('img')
         mainSrc = mainImg.attr('src')
         mainId = mainImg.parent().attr('data-img')
+        mainTitle=mainImg.prev().children("h1").text()
 
     }
 );
@@ -79,6 +86,17 @@ function getIdList(editBar) {
 
     return idList;
 }
+function getTitleList(editBar) {
+    var titleList = new Array();
+    $(editBar).children('span').each(function () {
+
+        var imgTitle = $(this).children('img').attr('data-img-title');
+        //console.log(imgsrc);
+        titleList.push(imgTitle);
+    });
+
+    return titleList;
+}
 function arrowClickHandle(target, direction) {
     //get main image and edit bar objects
     var mainImg = $(target).parent().parent().parent().children('img')
@@ -87,6 +105,7 @@ function arrowClickHandle(target, direction) {
     //get the src path for all edits in the bar
     var srcList = getSrcList(editBar);
     var idList = getIdList(editBar);
+    var titleList = getTitleList(editBar);
     //find current place in list
     var i = srcList.indexOf(src)
 
@@ -107,6 +126,9 @@ function arrowClickHandle(target, direction) {
     mainImg.parent().attr('data-img', idList[i])
     setActive(editBar, srcList[i])
 
+    //assign new title
+    var title=mainImg.prev().children("h1")
+    title.text(titleList[i]);
     //reset like btn
     var temp = $(target).parent().parent().parent()    
     var btn=$(temp).find(".like-bt")

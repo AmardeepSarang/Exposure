@@ -119,7 +119,6 @@ $result = mysqli_query($db, $query);
             $id = $row["Img_id"];
             $path = $row["Img_file_name"];
             $title=$row['title']
-            //echo "id: " . $row["Img_id"] . " - path Name: " . $row["Img_file_name"] . "<br>";
 
         ?>
         <div class="grid-item">
@@ -130,7 +129,7 @@ $result = mysqli_query($db, $query);
             </div>   
             <img src=<?php echo "'" . $path . "'" ?>>
                 <div class="pic-edit-picker">
-                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" . "data-img= '" . $id . "'" ?>></span>
+                    <span><img class="pic-edit-picked" src=<?php echo "'" . $path . "'" . "data-img= '" . $id . "'"." data-img-title= '".$title."'" ?>></span>
 
                     <?php
                     //returns list of edits of the image
@@ -138,8 +137,9 @@ $result = mysqli_query($db, $query);
                     $edit_result = mysqli_query($db, $query);
                     while ($edit_row = mysqli_fetch_assoc($edit_result)) {
                         $edit_id = $edit_row["Img_id"];
+                        $edit_title = $edit_row["title"];
                         $edit_path = $edit_row["Img_file_name"];
-                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '"></span>';
+                        echo '<span><img src="' . $edit_path . '" data-img= "' . $edit_id . '" data-img-title= "' . $edit_title . '"></span>';
                     }
                     ?>
 
