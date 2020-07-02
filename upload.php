@@ -8,6 +8,7 @@
 <?php
 session_start();
 include_once 'include/config.php';
+include_once 'include/water_marker.php';
 include_once 'include/getuser.php';
 
 function uploadFile($file)
@@ -67,7 +68,20 @@ function getIdByPath($db, $path)
         return $row["Img_id"];
     }
 }
+function getUserName($db, $id)
+{
+    //get user name
+    $query = "SELECT * FROM `user` WHERE user_id = '$id'";
+    $result = mysqli_query($db, $query);
 
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        $row = mysqli_fetch_assoc($result);
+        //echo "id: " . $row["tag_id"] . " - Name: " . $row["tag_name"] . "<br>";
+        return $row["name"];
+    }
+    return false;
+}
 function getTagIdByname($db, $name)
 {
     //get tag id if the tag exits
@@ -236,6 +250,9 @@ function insertImgedit($db, $imgId, $orgId)
         if (isset($_POST['edit_of'])) {
             //set new image to be an edit of old image
             insertImgedit($db, $imgId, $edit_of);
+        }else{
+            //add watermark to orginal image
+            watermark($path, getUserName($db, $upload_user));
         }
         mysqli_close($db);
     }
