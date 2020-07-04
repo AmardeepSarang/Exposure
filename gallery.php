@@ -62,7 +62,7 @@ $result = mysqli_query($db, $query);
         <ul class="nav-links">
             <li><a href="gallery.php"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
             <li><a href="user.php"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
-            <li><a href="account.html"><i class="fas fa-user-cog"></i></i>&nbsp settings</a></li>
+            <li><a href="account.php"><i class="fas fa-user-cog"></i></i>&nbsp settings</a></li>
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
             <li><a href="about.html"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
         </ul>

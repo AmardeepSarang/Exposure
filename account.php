@@ -1,3 +1,34 @@
+<?php
+session_start();
+include_once 'include/config.php';
+include_once 'include/gallery_user_functions.php';
+include_once 'include/getuser.php';
+
+//get user
+$user = getSessionUser();
+
+
+// Connect to MySQL
+$db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+
+// Error checking
+if (!$db) {
+    print "<p>Error - Could not connect to MySQL</p>";
+    exit;
+}
+$error = mysqli_connect_error();
+
+if ($error != null) {
+    $output = "<p>Unable to connet to database</p>" . $error;
+    exit($output);
+}
+
+$query = "SELECT * FROM `user` WHERE user_id=$user";
+$result = mysqli_query($db, $query);
+$row = mysqli_fetch_assoc($result);
+
+?>
+
 <!DOCTYPE html>
 <html lan="en">
 
@@ -33,10 +64,10 @@
             <a href="#"><i class="fas fa-plus"></i>&nbsp Post new image</a>
         </div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
-            <li><a href="#"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
-            <li><a href="#"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
+        <li><a href="gallery.php"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
+            <li><a href="user.php"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
+            <li><a href="about.html"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
         </ul>
 
         
@@ -54,31 +85,35 @@
         </div>
         <div class="settings">
             <div class="header"> Edit Profile </div>
-            <div class="info">
-                Name <br>
+            <form class="info" action="include/user_update.php" method="POST" enctype="multipart/form-data">
+             <!--   Name <br>
                 <input type="text" name="Name" id="fname" value="Jerin John"><br><br>
+              -->
                 User Name <br>
-                <input type="text" name="Username" id="uname" value=" jerin10john"><br><br>
+                <input type="text" name="Username" id="uname" value="<?php echo $row['name']?>"><br><br>
                 E-mail <br>
-                <input type="text" name="E-Mail" id="email" value=" jerin10john@gmail.com"><br><br>
+                <input type="text" name="E-Mail" id="email" value="<?php echo $row['email']?>"><br><br>
+                <input type="hidden" name="user" value="<?php echo $row['user_id']?>">
                 <button type="submit" name="Update-Info">Update Info</button>
-            </div>
+            </form>
             <div class="header"> Change Password </div>
-            <div class="info">
+            <form class="info" action="include/change_password.php" method="POST" enctype="multipart/form-data">
                 Enter Old Password <br>
-                <input type="password" name="Old Password" id="opass" value=""><br><br>
+                <input type="password" name="Old-Password" id="opass" value=""><br><br>
                 Enter New Passowrd <br>
-                <input type="password" name="New Password" id="npass" value=""><br><br>
+                <input type="password" name="New-Password" id="npass" value=""><br><br>
                 Confirm New Password <br>
-                <input type="password" name="D Check Password" id="cpass" value=""><br><br>
+                <input type="password" name="D-Check-Password" id="cpass" value=""><br><br>
+                <input type="hidden" name="user" value="<?php echo $row['user_id']?>">
                 <button type="submit" name="Password-change">Change Password</button>
-            </div>
+            </form>
             <div class="header"> Deactivate Account </div>
-            <div class="info">
+            <form class="info">
                 Enter Passowrd <br>
                 <input type="password" name="Password " id="dpass" value=""><br><br>
+                <input type="hidden" name="user" value="<?php echo $row['user_id']?>">
                 <button type="submit" name="Delete-Accoutn">Deactive Account</button>
-            </div>
+            </form>
         </div>
     </div>
 
