@@ -920,3 +920,103 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   border-radius: 20px;
   margin-bottom: 1px;
 }
+
+/*///////////////////////////////////////////////////////////////////////////////*/
+/* Editor */
+
+.editor .filter{
+  position: fixed;
+  width: 320px;
+  height: 100%;
+  background: #ee6352;
+}
+
+.editor .filter h2{
+  font-size: 35px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #13163d;
+  text-align: center;
+}
+
+.editor .filter ul li{
+  padding: 35px;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  list-style: none;
+}
+
+.editor .filter ul li a{
+  color: #ffff;
+  display: block;
+  text-decoration: none;
+}
+
+.editor .filter ul li:hover{
+  background: #f7432d;
+  border-radius: 25px;
+}
+
+.editor .edit{
+  position: fixed;
+  width: 320px;
+  height: 100%;
+  background: #ee6352;
+  right: 0px;
+}
+
+.editor .edit h2{
+  font-size: 35px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #13163d;
+  text-align: center;
+}
+
+.editor .edit h3{
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #13163d;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  list-style: none;
+}
+
+
+.slidecontainer {
+  width: 80%; /* Width of the outside container */
+  padding-left: 28px;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #2f357d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
