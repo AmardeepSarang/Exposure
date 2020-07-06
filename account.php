@@ -108,11 +108,11 @@ $row = mysqli_fetch_assoc($result);
                 <button type="submit" name="Password-change">Change Password</button>
             </form>
             <div class="header"> Deactivate Account </div>
-            <form class="info">
-                Enter Passowrd <br>
-                <input type="password" name="Password " id="dpass" value=""><br><br>
+            <form class="info" action="include/delete_user.php" method="POST" enctype="multipart/form-data">
+                Enter Password <br>
+                <input type="password" name="Password" id="dpass" value=""><br><br>
                 <input type="hidden" name="user" value="<?php echo $row['user_id']?>">
-                <button type="submit" name="Delete-Accoutn">Deactive Account</button>
+                <button type="submit" name="Delete-Account">Deactive Account</button>
             </form>
         </div>
     </div>
