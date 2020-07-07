@@ -790,11 +790,15 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 
   .user-settings .sidebar{
     position: fixed;
-    width: 450px;
+    width: 400px;
     height: 100%;
     background: #ee6352;
   }
-
+  .user-settings .settings{
+    width: auto;
+    margin-left: 450px;
+  }
+  
   .user-settings .sidebar h2{
     font-size: 40px;
     font-family: 'Roboto Condensed', sans-serif;
@@ -820,11 +824,6 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     border-radius: 25px;
   }
 
-  .user-settings .settings{
-    width: 79%;
-    margin-left: 450px;
-  }
-
   .user-settings .settings .header{
     padding: 30px;
     background: #ffff;
@@ -842,7 +841,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   }
 
   .user-settings .settings .info input[type="text"]{
-    width:1300px;
+    width:90%;
     color: #ffff;
     padding-left: 25px ;
     height: 40px;
@@ -851,7 +850,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   }
 
   .user-settings .settings .info input[type="password"]{
-    width:1300px;
+    width:90%;
     color: #ffff;
     padding-left: 25px ;
     height: 40px;
@@ -868,6 +867,65 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
     background: #ee6352;
     left: auto;
     margin-left:-30;
+}
+.user-settings .settings .info button[type="submit"]:hover{
+  background-color: #f6f4f3;
+  color: #ee6352;
+  border: 5px solid #ee6352;
+
+}
+
+.user-settings .settings .info button[type="submit"]:active{
+  background-color: #f6f4f3;
+  color: yellow;
+  border: 5px solid #ee6352;
+
+}
+
+
+@media only screen and (max-width: 810px) {
+  .user-settings .sidebar{
+  
+    width: 300px;
+  }
+  .user-settings .settings{
+    width: auto;
+    margin-left: 300px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .user-settings .sidebar{
+  
+    width: 200px;
+  }
+  .user-settings .settings{
+    width: auto;
+    margin-left: 200px;
+  }
+
+}
+@media only screen and (max-width: 550px) {
+  .user-settings .sidebar{
+  
+    width: 75px;
+  }
+  .user-settings .settings{
+    width: auto;
+    margin-left: 75px;
+  }
+  .user-settings .sidebar h2{
+   visibility: hidden;
+   position: fixed;
+  }
+  .user-settings .sidebar ul{
+    padding-left: 0px;
+  }
+  .user-settings .sidebar ul li a span{
+    visibility: hidden;
+  }
+  .user-settings .settings .info button[type="submit"]{
+    width: 90%;
+  }
 }
 
   /*////////////////////////////////////////////////////////////////////////*/

@@ -77,14 +77,14 @@ $row = mysqli_fetch_assoc($result);
         <div class="sidebar">
             <h2>Account Settings </h2>
             <ul>
-                <li><a href="#"><i class="fa fa-wrench" aria-hidden="true"></i>   Edit Profile </a></li>
-                <li><a href="#"><i class="fa fa-lock" aria-hidden="true"></i>   Chnage Password </a> </li>
-                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>   Logout </li>
-                <li><a href="#"><i class="fa fa-user-times" aria-hidden="true"></i>   Deactivate Account </a> </li>
+                <li><a href="#profile"><i class="fa fa-wrench" aria-hidden="true"></i>   <span> Profile</span> </a></li>
+                <li><a href="#password"><i class="fa fa-lock" aria-hidden="true"></i>   <span> Chnage Password</span> </a> </li>
+                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> <span> Logout</span> </li>
+                <li><a href="#deactivate"><i class="fa fa-user-times" aria-hidden="true"></i>  <span> Deactivate Account</span> </a> </li>
             </ul>
         </div>
         <div class="settings">
-            <div class="header"> Edit Profile </div>
+            <div id="profile" class="header"> Edit Profile </div>
             <form class="info" action="include/user_update.php" method="POST" enctype="multipart/form-data">
              <!--   Name <br>
                 <input type="text" name="Name" id="fname" value="Jerin John"><br><br>
@@ -97,7 +97,7 @@ $row = mysqli_fetch_assoc($result);
                 <button type="submit" name="Update-Info">Update Info</button>
             </form>
             <div class="header"> Change Password </div>
-            <form class="info" action="include/change_password.php" method="POST" enctype="multipart/form-data">
+            <form id="password" class="info" action="include/change_password.php" method="POST" enctype="multipart/form-data">
                 Enter Old Password <br>
                 <input type="password" name="Old-Password" id="opass" value=""><br><br>
                 Enter New Passowrd <br>
@@ -107,8 +107,8 @@ $row = mysqli_fetch_assoc($result);
                 <input type="hidden" name="user" value="<?php echo $row['user_id']?>">
                 <button type="submit" name="Password-change">Change Password</button>
             </form>
-            <div class="header"> Deactivate Account </div>
-            <form class="info" action="include/delete_user.php" method="POST" enctype="multipart/form-data">
+            <div  class="header"> Deactivate Account </div>
+            <form id="deactivate" class="info" action="include/delete_user.php" method="POST" enctype="multipart/form-data">
                 Enter Password <br>
                 <input type="password" name="Password" id="dpass" value=""><br><br>
                 <input type="hidden" name="user" value="<?php echo $row['user_id']?>">
@@ -120,6 +120,8 @@ $row = mysqli_fetch_assoc($result);
     </div>
     <script src="js/nav.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/account.js"></script>
+
 
 
 </body>
