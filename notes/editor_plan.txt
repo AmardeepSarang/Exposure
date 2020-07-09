@@ -1,0 +1,13 @@
+Editor plan:
+- Best image processing library found: http://camanjs.com/ (client side)
+- Works using html canvas
+- library can import  image into canvas if given img url, can get from server on page load
+- Need to figure out save image back to server, this should work: https://stackoverflow.com/questions/13198131/how-to-save-an-html5-canvas-as-an-image-on-a-server
+- May need to change the current upload interface to accommodate???
+
+
+Download the image and reuploading it (not using the editor):
+- you don't necessarily need to use any server side scripting language like PHP to download you can just create a hyperlink pointing to that file, and whenever a user click on the link, browser will automatically downloads that file.
+
+- We just add image address to download button
+- Reupload onto canvas? Like this: https://stackoverflow.com/questions/10906734/how-to-upload-image-into-html5-canvas
