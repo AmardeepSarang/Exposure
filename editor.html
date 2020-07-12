@@ -31,7 +31,7 @@
         <div class="post-bt">
             <a href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Download Image &nbsp</a>
             &nbsp &nbsp &nbsp
-            <a href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Upload &nbsp</a>
+            <a id="edit-up" href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Upload &nbsp</a>
             &nbsp &nbsp &nbsp
             <a href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edited image &nbsp</a>
         </div>
@@ -42,23 +42,29 @@
             <li><a href="#"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
         </ul>
 
-        
+
     </nav>
 
+    <div class="upload-popup">
+        <input type="file"><br>
+        <button id='up-can'>Cancel</button>
+        <button>Ok</button>
+
+    </div>
     <div class="editor">
         <div class="filter">
             <h2> Filter </h2>
             <ul>
-                <li><a href="#"><i class="fa fa-wrench" aria-hidden="true"></i>   Edit Profile </a></li>
-                <li><a href="#"><i class="fa fa-lock" aria-hidden="true"></i>   Chnage Password </a> </li>
-                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>   Logout </li>
-                <li><a href="#"><i class="fa fa-user-times" aria-hidden="true"></i>   Deactivate Account </a> </li>
+                <li><a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> Edit Profile </a></li>
+                <li><a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Chnage Password </a> </li>
+                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </li>
+                <li><a href="#"><i class="fa fa-user-times" aria-hidden="true"></i> Deactivate Account </a> </li>
             </ul>
         </div>
-
+        <div class="display"><canvas width="500" height="500"></canvas></div>
         <div class="edit">
-            <h2> Editor  </h2>
-            
+            <h2> Editor </h2>
+
             <h3> Color Temp </h3>
             <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
@@ -106,4 +112,8 @@
 
         </div>
     </div>
+    
+    <script src="js/nav.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/editor.js"></script>
 </body>

@@ -11,3 +11,6 @@ Download the image and reuploading it (not using the editor):
 
 - We just add image address to download button
 - Reupload onto canvas? Like this: https://stackoverflow.com/questions/10906734/how-to-upload-image-into-html5-canvas
+
+
+https://code.tutsplus.com/tutorials/creating-an-image-editor-using-camanjs-applying-basic-filters--cms-30251
