@@ -12,6 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
+    
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/caman.full.min.js"></script>
+    <?php
+    if (isset($_GET['id'])&&isset($_GET['path'])) {
+        $id=$_GET['id'];
+        $path=$_GET['path'];
+    }else{
+        echo "paramerters have not been set";
+        exit();
+    }
+    ?>
 </head>
 
 <body>
@@ -29,7 +41,7 @@
             <div class="line"></div>
         </div>
         <div class="post-bt">
-            <a href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Download Image &nbsp</a>
+            <a href="<?php echo $path?>" download> &nbsp <i class="fas fa-plus"></i>&nbsp Download Image &nbsp</a>
             &nbsp &nbsp &nbsp
             <a id="edit-up" href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Upload &nbsp</a>
             &nbsp &nbsp &nbsp
@@ -46,9 +58,10 @@
     </nav>
 
     <div class="upload-popup">
-        <input type="file"><br>
+        <input id="imageLoader" type="file"><br>
         <button id='up-can'>Cancel</button>
-        <button>Ok</button>
+
+        <button id="up-ok">Ok</button>
 
     </div>
     <div class="editor">
@@ -61,7 +74,12 @@
                 <li><a href="#"><i class="fa fa-user-times" aria-hidden="true"></i> Deactivate Account </a> </li>
             </ul>
         </div>
-        <div class="display"><canvas width="500" height="500"></canvas></div>
+        <div class="display">
+            <div class="inner">
+            <img id="editor-img" src="images\placeholder_preview.png" alt="">
+    
+        </div>
+        </div>
         <div class="edit">
             <h2> Editor </h2>
 
@@ -77,7 +95,7 @@
 
             <h3> Exposure </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-exp">
             </div>
 
             <h3> Contrast </h3>
@@ -114,6 +132,10 @@
     </div>
     
     <script src="js/nav.js"></script>
-    <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/editor.js"></script>
+<!--
+    <script>
+        importImg(<?php /*echo '"'.$path.'"'*/?>)
+    </script>
+-->
 </body>

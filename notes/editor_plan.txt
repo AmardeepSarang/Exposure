@@ -14,3 +14,7 @@ Download the image and reuploading it (not using the editor):
 
 
 https://code.tutsplus.com/tutorials/creating-an-image-editor-using-camanjs-applying-basic-filters--cms-30251
+
+Fix scale: https://jsfiddle.net/yvyz2r58/
+
+https://stackoverflow.com/questions/32014050/put-image-into-html-canvas-fit-width-and-height?rq=1

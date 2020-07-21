@@ -146,9 +146,9 @@ $result = mysqli_query($db, $query);
                 </div>
                 <div class="pic-control-bar">
                     <span><?php addLike($db, $user, $id) ?></span>
-                    <span><button><i class="fas fa-plus-square"></i></button></span>
+                    <span><button onclick="location.href='<?php echo 'editor.php?id='.$id.'&path='.urlencode($path)?>'" ><i class="fas fa-edit"></i></button></span>
                     <span><button class="fullscreen-bt"><i class="fas fa-expand"></i></button></span>
-                    <span><button><i class="fas fa-info-circle"></i></button></span>
+                    <span><button><i class="fas fa-info"></i></button></span>
                     <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
                     <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
                     <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
