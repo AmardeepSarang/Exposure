@@ -76,8 +76,7 @@
         </div>
         <div class="display">
             <div class="inner">
-            <img id="editor-img" src="images\placeholder_preview.png" alt="">
-    
+            <canvas id="editor-can"></canvas>
         </div>
         </div>
         <div class="edit">
