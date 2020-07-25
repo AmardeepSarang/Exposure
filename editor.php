@@ -12,14 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
-    
+
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/caman.full.min.js"></script>
     <?php
-    if (isset($_GET['id'])&&isset($_GET['path'])) {
-        $id=$_GET['id'];
-        $path=$_GET['path'];
-    }else{
+    if (isset($_GET['id']) && isset($_GET['path'])) {
+        $id = $_GET['id'];
+        $path = $_GET['path'];
+    } else {
         echo "paramerters have not been set";
         exit();
     }
@@ -41,17 +41,18 @@
             <div class="line"></div>
         </div>
         <div class="post-bt">
-            <a href="<?php echo $path?>" download> &nbsp <i class="fas fa-plus"></i>&nbsp Download Image &nbsp</a>
+            <a href="<?php echo $path ?>" download> &nbsp <i class="fas fa-plus"></i>&nbsp Download Image &nbsp</a>
             &nbsp &nbsp &nbsp
             <a id="edit-up" href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Upload &nbsp</a>
             &nbsp &nbsp &nbsp
             <a href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edited image &nbsp</a>
         </div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
-            <li><a href="#"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
-            <li><a href="#"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
+            <li><a href="gallery.php"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
+            <li><a href="user.php"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
+            <li><a href="account.php"><i class="fas fa-user-cog"></i></i>&nbsp settings</a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp Sign out</a></li>
+            <li><a href="about.html"><i class="fas fa-question-circle"></i>&nbsp About</a></li>
         </ul>
 
 
@@ -76,20 +77,20 @@
         </div>
         <div class="display">
             <div class="inner">
-            <canvas id="editor-can"></canvas>
-        </div>
+                <canvas id="editor-can"></canvas>
+            </div>
         </div>
         <div class="edit">
             <h2> Editor </h2>
 
             <h3> Color Temp </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
             <h3> Tint </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
             <h3> Exposure </h3>
@@ -99,42 +100,42 @@
 
             <h3> Contrast </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
             <h3> Highlight </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
             <h3> Shadows </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
             <h3> Texture And Clarity </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
             <h3> Saturation </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
             <h3> Sharpness </h3>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
         </div>
     </div>
-    
+
     <script src="js/nav.js"></script>
     <script src="js/editor.js"></script>
-<!--
+    <!--
     <script>
-        importImg(<?php /*echo '"'.$path.'"'*/?>)
+        importImg(<?php /*echo '"'.$path.'"'*/ ?>)
     </script>
 -->
 </body>
