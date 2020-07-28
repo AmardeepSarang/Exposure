@@ -41,11 +41,13 @@
             <div class="line"></div>
         </div>
         <div class="post-bt">
-            <a href="<?php echo $path ?>" download> &nbsp <i class="fas fa-plus"></i>&nbsp Download Image &nbsp</a>
+            <a href="<?php echo $path ?>" download> &nbsp <i class="fas fa-download"></i>&nbsp Download Image &nbsp</a>
             &nbsp &nbsp &nbsp
-            <a id="edit-up" href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Upload &nbsp</a>
+            <a id="edit-up" href="#"> &nbsp <i class="fas fa-upload"></i>&nbsp Upload &nbsp</a>
             &nbsp &nbsp &nbsp
-            <a href="#"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edited image &nbsp</a>
+            <form action="<?php echo 'post.php?edit_of='.$id?>" method="POST" id="upload-form">
+            <button type="submit" name="submit" id="edit-sub"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edited image &nbsp</button>
+            </form>
         </div>
         <ul class="nav-links">
             <li><a href="gallery.php"><i class="fas fa-th"></i>&nbsp Gallery</a></li>

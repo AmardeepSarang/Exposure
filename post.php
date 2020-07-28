@@ -9,6 +9,7 @@ $edit_of = -1;
 $db = "";
 if (isset($_GET['edit_of'])) {
     $edit_of = $_GET['edit_of'];
+    echo $_POST['img'];
     // Connect to MySQL
     $db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 

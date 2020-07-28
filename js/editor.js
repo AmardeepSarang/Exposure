@@ -94,3 +94,28 @@ $("#slide-exp").change(function () {
         this.exposure(val).render();
     });
 })
+
+
+
+////////////////////////////
+//submit button handler
+////////////////////////////
+$("#edit-sub").click(function () {
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    //get parameters
+    var id = url.searchParams.get("id");
+    var img    = canvas.toDataURL("image/png");
+    
+    //window.location.href=new_url
+
+    //add to post param by adding to form
+    $('#upload-form').submit(function(){ //listen for submit event
+        $('<input />').attr('type', 'hidden')
+                .attr('name', "img")
+                .attr('value', img)
+                .appendTo('#upload-form');
+    
+        return true;
+    }); 
+})
