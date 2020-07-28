@@ -11,6 +11,14 @@ include_once 'include/config.php';
 include_once 'include/water_marker.php';
 include_once 'include/getuser.php';
 
+function uploadEdit($url)
+{
+    $fileNameNew = uniqid('', true) . ".png";
+    //create path to folder
+    $fileDestination = 'images/uploads/' . $fileNameNew;
+    file_put_contents($fileDestination, file_get_contents($url));
+    return $fileDestination;
+}
 function uploadFile($file)
 {
     //upload image to upload folder and return new file path
@@ -166,8 +174,14 @@ function insertImgedit($db, $imgId, $orgId)
 <div class="form-box">
     <?php
     if (isset($_POST['submit'])) {
-        $file = $_FILES['file'];
-        $path = uploadFile($file);
+
+        if (isset($_POST['img'])) {
+            //upload img from editor canvas
+            $path = uploadEdit($_POST['img']);
+        } else {
+            $file = $_FILES['file'];
+            $path = uploadFile($file);
+        }
         $title = $_POST['title'];
         $desc = $_POST['description'];
         $tags = $_POST['tags'];
@@ -213,7 +227,7 @@ function insertImgedit($db, $imgId, $orgId)
         if ($statement = mysqli_prepare($db, $query)) {
 
             // bind parameters s - string,
-            $result = mysqli_stmt_bind_param($statement, 'ssssss', $title, $path,$edit_user, $upload_user, $is_original, $desc);
+            $result = mysqli_stmt_bind_param($statement, 'ssssss', $title, $path, $edit_user, $upload_user, $is_original, $desc);
             if (!$result) {
                 print "<p>bounding error</p>";
             }
@@ -250,7 +264,7 @@ function insertImgedit($db, $imgId, $orgId)
         if (isset($_POST['edit_of'])) {
             //set new image to be an edit of old image
             insertImgedit($db, $imgId, $edit_of);
-        }else{
+        } else {
             //add watermark to orginal image
             watermark($path, getUserName($db, $upload_user));
         }

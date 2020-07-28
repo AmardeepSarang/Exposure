@@ -9,7 +9,7 @@ $edit_of = -1;
 $db = "";
 if (isset($_GET['edit_of'])) {
     $edit_of = $_GET['edit_of'];
-    echo $_POST['img'];
+    //echo $_POST['img'];
     // Connect to MySQL
     $db = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
@@ -155,8 +155,18 @@ function addParam($db,$edit_of)
             <div>
                 Description:<input type="text" name="description" <?php addDes($db, $edit_of) ?> placeholder="Enter description (optional)">
             </div>
+
+            
             <div id="filediv">
-                File: <input id="imginput" type="file" name="file">
+                File: 
+                <?php
+                    if(isset($_POST['img'])){
+                        echo "From editor";
+                        echo '<input  name="img" type="hidden" value="'.$_POST['img'].'">';
+                    }else{
+                        echo '<input id="imginput" type="file" name="file">';
+                    }
+                ?>
             </div>
             <?php addParam($db,$edit_of)?>
             <button type="submit" name="submit"><?php addBtnTitle($edit_of)?></button>

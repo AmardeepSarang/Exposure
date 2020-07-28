@@ -84,17 +84,6 @@ $( window ).on("load", function() {
     importStartImg(path)
 });
 
-//////////////////////
-//listen for change in sliders
-////////////////////////
-$("#slide-exp").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
-        this.exposure(val).render();
-    });
-})
-
 
 
 ////////////////////////////
@@ -119,3 +108,50 @@ $("#edit-sub").click(function () {
         return true;
     }); 
 })
+
+//////////////////////
+//listen for change in sliders
+////////////////////////
+$("#slide-exp").change(function () {
+    var val = $(this).val()
+    console.log(val)
+    Caman("#editor-can", function () {
+        this.exposure(val).render();
+    });
+})
+
+
+
+$("#slide-cont").change(function () {
+    var val = $(this).val()
+    console.log(val)
+    Caman("#editor-can", function () {
+        this.contrast(val).render();
+    });
+})
+
+$("#slide-sat").change(function () {
+    var val = $(this).val()
+    console.log(val)
+    Caman("#editor-can", function () {
+        this.saturation(val).render();
+    });
+})
+
+$("#slide-hue").change(function () {
+    var val = $(this).val()
+    console.log(val)
+    Caman("#editor-can", function () {
+        this.hue(val).render();
+    });
+})
+
+$("#slide-noise").change(function () {
+    var val = $(this).val()
+    console.log(val)
+    Caman("#editor-can", function () {
+        this.noise(val).render();
+    });
+})
+
+
