@@ -997,7 +997,7 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 }
 
 .editor .filter ul li{
-  padding: 35px;
+  padding: 10px;
   font-size: 20px;
   font-family: 'Roboto Condensed', sans-serif;
   list-style: none;
@@ -1011,7 +1011,6 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 
 .editor .filter ul li:hover{
   background: #f7432d;
-  border-radius: 25px;
 }
 .editor .display{
   position: fixed;

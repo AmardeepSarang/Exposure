@@ -69,10 +69,10 @@
         <div class="filter">
             <h2> Filter </h2>
             <ul>
-                <li><a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> Edit Profile </a></li>
-                <li><a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Chnage Password </a> </li>
-                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </li>
-                <li><a href="#"><i class="fa fa-user-times" aria-hidden="true"></i> Deactivate Account </a> </li>
+                <li><a id="filter-vin"> Vintage </a></li>
+                <li><a id="filter-sun">Sunrise </a> </li>
+                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> CrossProcess </li>
+                <li><a href="#"><i class="fa fa-user-times" aria-hidden="true"></i> Orange </a> </li>
             </ul>
         </div>
         <div class="display">
@@ -83,34 +83,34 @@
         <div class="edit">
             <h2> Editor </h2>
 
-            <h3> Color Temp </h3>
-            <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
-            </div>
-
-            <h3> Tint </h3>
-            <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
-            </div>
-
             <h3> Exposure </h3>
             <div class="slidecontainer">
                 <input type="range" min="-100" max="100" value="0" class="slider" id="slide-exp">
             </div>
 
+            <h3> Saturation </h3>
+            <div class="slidecontainer">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-sat">
+            </div>
+
+            <h3> Tint </h3>
+            <div class="slidecontainer">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-hue">
+            </div>
+
             <h3> Contrast </h3>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-cont">
             </div>
 
-            <h3> Highlight </h3>
+            <h3> Sharpness </h3>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="myRange">
             </div>
 
-            <h3> Shadows </h3>
+            <h3> Grain </h3>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-noise">
             </div>
 
             <h3> Texture And Clarity </h3>
@@ -118,15 +118,6 @@
                 <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
             </div>
 
-            <h3> Saturation </h3>
-            <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
-            </div>
-
-            <h3> Sharpness </h3>
-            <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
-            </div>
 
         </div>
     </div>
