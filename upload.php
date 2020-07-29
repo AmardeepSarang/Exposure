@@ -123,7 +123,7 @@ function insertTag($db, $tag)
         if ($result) {
             return getTagIdByname($db, $tag);
         } else {
-            print "Mysql insert Error" . mysqli_stmt_error($statement);
+            print "Mysql insert tag Error" . mysqli_stmt_error($statement);
         }
     }
 }
@@ -145,7 +145,7 @@ function insertImgTag($db, $imgId, $tagId)
         $result = mysqli_stmt_execute($statement);
 
         if (!$result) {
-            print "Mysql insert Error" . mysqli_stmt_error($statement);
+            print "Mysql insert img-tag Error" . mysqli_stmt_error($statement);
         }
     }
 }
@@ -166,7 +166,7 @@ function insertImgedit($db, $imgId, $orgId)
         $result = mysqli_stmt_execute($statement);
 
         if (!$result) {
-            print "Mysql insert Error" . mysqli_stmt_error($statement);
+            print "Mysql insert edit Error" . mysqli_stmt_error($statement);
         }
     }
 }
@@ -237,7 +237,7 @@ function insertImgedit($db, $imgId, $orgId)
             if ($result) {
                 print "<p>Your image post was successful</p>";
             } else {
-                print "Mysql insert Error" . mysqli_stmt_error($statement);
+                print "Mysql insert image Error" . mysqli_stmt_error($statement);
             }
         }
 

@@ -38,7 +38,7 @@ Main nav bar
   padding: 3vh;
 }
 
-.post-bt a{
+.post-bt a, #edit-sub{
 
   background-color: #ee6352;
   padding: 5px;
@@ -47,6 +47,16 @@ Main nav bar
   border-radius: 20px;
   font-size: 18px;
   transition: background-color 1s;
+}
+.post-bt form{
+  display: inline-block;
+}
+#edit-sub{
+  display: inline;
+  border: none;
+}
+#edit-sub:active{
+  background-color: #f6f4f3;
 }
 .post-bt a:active{
   background-color: #f6f4f3;

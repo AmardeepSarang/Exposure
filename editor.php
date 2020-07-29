@@ -46,7 +46,7 @@
             <a id="edit-up" href="#"> &nbsp <i class="fas fa-upload"></i>&nbsp Upload &nbsp</a>
             &nbsp &nbsp &nbsp
             <form action="<?php echo 'post.php?edit_of='.$id?>" method="POST" id="upload-form">
-            <button type="submit" name="submit" id="edit-sub"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edited image &nbsp</button>
+            <button type="submit" name="submit" id="edit-sub"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edit &nbsp</button>
             </form>
         </div>
         <ul class="nav-links">

@@ -34,7 +34,7 @@ function addTitle($db, $edit_of)
 
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
-        echo "value = '".$row['title']."'";
+        echo "value = '" . $row['title'] . "'";
     } else {
         echo "";
     }
@@ -46,13 +46,17 @@ function addTags($db, $edit_of)
         $query = "SELECT tag.tag_name FROM img_tag, tag WHERE img_tag.tag_id=tag.tag_id AND img_tag.img_id=$edit_of";
 
         $result = mysqli_query($db, $query);
-        
-        $tag_str="";
-        while ($row = mysqli_fetch_assoc($result)) {
-            //make a string of tags
-            $tag_str =$tag_str. $row["tag_name"]." ";
+        if (mysqli_num_rows($result) > 0) {
+
+            $tag_str = "";
+            while ($row = mysqli_fetch_assoc($result)) {
+                //make a string of tags
+                $tag_str = $tag_str . $row["tag_name"] . " ";
+            }
+            echo "value = '" . $tag_str . "'";
+        } else {
+            echo "";
         }
-        echo "value = '".$tag_str."'";
     } else {
         echo "";
     }
@@ -65,7 +69,7 @@ function addDes($db, $edit_of)
 
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
-        echo "value = '".$row['description']."'";
+        echo "value = '" . $row['description'] . "'";
     } else {
         echo "";
     }
@@ -81,7 +85,7 @@ function addBtnTitle($edit_of)
     }
 }
 
-function addParam($db,$edit_of)
+function addParam($db, $edit_of)
 {
 
 
@@ -91,8 +95,8 @@ function addParam($db,$edit_of)
 
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
-        echo '<input type="hidden" name="edit_of" value="'.$edit_of.'" />';
-        echo '<input type="hidden" name="upload_by" value="'.$row['uploaded_by'].'" />';
+        echo '<input type="hidden" name="edit_of" value="' . $edit_of . '" />';
+        echo '<input type="hidden" name="upload_by" value="' . $row['uploaded_by'] . '" />';
     }
 }
 
@@ -144,32 +148,39 @@ function addParam($db,$edit_of)
     <div class="form-box">
         <form action="upload.php" method="POST" enctype="multipart/form-data">
             <div class="image-preview">
-                <img src="images/placeholder_preview.png" alt="">
+                <?php
+                if (isset($_POST['img'])) {
+
+                    echo '<img src="' . $_POST['img'] . '" alt="">';
+                } else {
+                    echo '<img src="images/placeholder_preview.png" alt="">';
+                }
+                ?>
 
             </div>
             <div id="titleInput">Title:<input type="text" <?php addTitle($db, $edit_of) ?> name="title" placeholder="Enter title"></div>
 
             <div>
-                Tags (seperate tages by spaces):<br> <input type="text" <?php addTags($db, $edit_of) ?>  name="tags" placeholder="Enter tags (optional)">
+                Tags (seperate tages by spaces):<br> <input type="text" <?php addTags($db, $edit_of) ?> name="tags" placeholder="Enter tags (optional)">
             </div>
             <div>
                 Description:<input type="text" name="description" <?php addDes($db, $edit_of) ?> placeholder="Enter description (optional)">
             </div>
 
-            
+
             <div id="filediv">
-                File: 
+                File:
                 <?php
-                    if(isset($_POST['img'])){
-                        echo "From editor";
-                        echo '<input  name="img" type="hidden" value="'.$_POST['img'].'">';
-                    }else{
-                        echo '<input id="imginput" type="file" name="file">';
-                    }
+                if (isset($_POST['img'])) {
+                    echo "From editor";
+                    echo '<input  name="img" type="hidden" value="' . $_POST['img'] . '">';
+                } else {
+                    echo '<input id="imginput" type="file" name="file">';
+                }
                 ?>
             </div>
-            <?php addParam($db,$edit_of)?>
-            <button type="submit" name="submit"><?php addBtnTitle($edit_of)?></button>
+            <?php addParam($db, $edit_of) ?>
+            <button type="submit" name="submit"><?php addBtnTitle($edit_of) ?></button>
         </form>
     </div>
     <script src="js/post.js"></script>
