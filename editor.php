@@ -68,20 +68,24 @@
 
     </div>
     <div class="editor">
-        <div class="filter">
-            <h2> Filter </h2>
-            <ul>
-                <li><a id="filter-vin"> Vintage </a></li>
-                <li><a id="filter-sun">Sunrise </a> </li>
-                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> CrossProcess </li>
-                <li><a href="#"><i class="fa fa-user-times" aria-hidden="true"></i> Orange </a> </li>
-            </ul>
-        </div>
+
         <div class="display">
             <div class="inner">
                 <canvas id="editor-can"></canvas>
             </div>
         </div>
+
+        <div class="filter">
+            <h2> Filter </h2>
+                <button id="filter-vin">Vintage</button> <br>
+                <button id="filter-sun">Sunrise</button> <br>
+                <button id="filter-cp">Cross Process</button> <br>
+                <button id="filter-lomo">Lomo</button> <br>
+                <button id="filter-pin">Pinhole</button> <br>
+                <button id="filter-her">Her Majesty</button> <br>
+
+        </div>
+
         <div class="edit">
             <h2> Editor </h2>
 
@@ -102,17 +106,17 @@
 
             <h3> Contrast </h3>
             <div class="slidecontainer">
-                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-cont">
+                <input type="range" min="-5" max="5" value="0" class="slider" id="slide-cont">
             </div>
 
             <h3> Sharpness </h3>
             <div class="slidecontainer">
-                <input type="range" min="-100" max="100" value="0" class="slider" id="myRange">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-sharp">
             </div>
 
             <h3> Grain </h3>
             <div class="slidecontainer">
-                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-noise">
+                <input type="range" min="-9" max="9" value="0" class="slider" id="slide-noise">
             </div>
 
             <h3> Texture And Clarity </h3>
