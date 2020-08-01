@@ -71,6 +71,9 @@
 
         <div class="display">
             <div class="inner">
+            <div class="loading-screen">
+<div class="spinner"></div>
+            </div>
                 <canvas id="editor-can"></canvas>
             </div>
         </div>

@@ -75,12 +75,12 @@ function importStartImg(path) {
     }
 
 }
-$( window ).on("load", function() {
-   var url_string = window.location.href
+$(window).on("load", function () {
+    var url_string = window.location.href
     var url = new URL(url_string);
     var path = url.searchParams.get("path");
-    
-    
+
+
     importStartImg(path)
 });
 
@@ -94,21 +94,31 @@ $("#edit-sub").click(function () {
     var url = new URL(url_string);
     //get parameters
     var id = url.searchParams.get("id");
-    var img    = canvas.toDataURL("image/png");
-    
+    var img = canvas.toDataURL("image/png");
+
     //window.location.href=new_url
 
     //add to post param by adding to form
-    $('#upload-form').submit(function(){ //listen for submit event
+    $('#upload-form').submit(function () { //listen for submit event
         $('<input />').attr('type', 'hidden')
-                .attr('name', "img")
-                .attr('value', img)
-                .appendTo('#upload-form');
-    
-        return true;
-    }); 
-})
+            .attr('name', "img")
+            .attr('value', img)
+            .appendTo('#upload-form');
 
+        return true;
+    });
+})
+////////////////////////
+//loading function 
+////////////////////////
+function loadingOn() {
+    //diplay loading overlay
+    $(".loading-screen").css("display", "flex");
+}
+function loadingOff() {
+    //hide loading overlay
+    $(".loading-screen").css("display", "none");
+}
 //////////////////////
 //listen for change in sliders
 ////////////////////////
@@ -158,46 +168,71 @@ $("#slide-noise").change(function () {
     Caman("#editor-can", function () {
         this.sharpen(val).render();
     });
+
 })
 
+
+//////////////////////////////////////
+////filters
+///////////////////////////////////////
 $("#vintage-btn").change(function () {
+
     Caman("#editor-can", function () {
         this.vintage().render();
     });
 })
 
 $("#filter-vin").on("click", function () {
-        Caman("#editor-can" , function () {
-            this.vintage().render();
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.vintage().render(function () {
+            loadingOff()
         });
+    });
+
 })
 
 $("#filter-sun").on("click", function () {
-    Caman("#editor-can" , function () {
-        this.sunrise().render();
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.sunrise().render(function () {
+            loadingOff()
+        });
     });
 })
 
 $("#filter-cp").on("click", function () {
-    Caman("#editor-can" , function () {
-        this.crossProcess().render();
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.crossProcess().render(function () {
+            loadingOff()
+        });
     });
 })
 
 $("#filter-lomo").on("click", function () {
-    Caman("#editor-can" , function () {
-        this.lomo().render();
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.lomo().render(function () {
+            loadingOff()
+        });
     });
 })
 
 $("#filter-pin").on("click", function () {
-    Caman("#editor-can" , function () {
-        this.pinhole().render();
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.pinhole().render(function () {
+            loadingOff()
+        });
     });
 })
 
 $("#filter-her").on("click", function () {
-    Caman("#editor-can" , function () {
-        this.herMajesty().render();
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.herMajesty().render(function () {
+            loadingOff()
+        });
     });
 })
