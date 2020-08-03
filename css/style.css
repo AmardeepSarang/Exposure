@@ -1007,14 +1007,14 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 }
 
 .editor .filter ul li{
-  padding: 10px;
-  font-size: 20px;
+  padding: 8px;
+  font-size: 16px;
   font-family: 'Roboto Condensed', sans-serif;
   list-style: none;
 }
 
 .editor .filter button{
-  padding: 10px;
+  padding: 7px;
   font-size: 20px;
   font-family: 'Roboto Condensed', sans-serif;
   text-decoration: none;
@@ -1031,6 +1031,11 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
    background-color: tomato;
 }
 
+.editor .filter button img{
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+}
 .editor .filter ul li a{
   color: #ffff;
   display: block;
@@ -1148,12 +1153,14 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 100%; /* Full-width */
-  height: 15px; /* Specified height */
+  height: 30px; /* Specified height */
+  border-radius: 25px;
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
+  -webkit-transition: .5s; /* 0.2 seconds transition on hover */
+  transition: opacity .5s;
+  box-shadow: 0px 1px 10px 1px black;
 }
 
 /* Mouse-over effects */
@@ -1165,10 +1172,12 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #2f357d; /* Green background */
+  border-radius: 50px;
+  width: 30px; /* Set a specific slider handle width */
+  height: 30px; /* Slider handle height */
+  background: #292f36; /* Green background */
   cursor: pointer; /* Cursor on hover */
+  box-shadow: 0px 1px 14px 1px black;
 }
 
 .slider::-moz-range-thumb {

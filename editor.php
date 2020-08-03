@@ -80,12 +80,13 @@
 
         <div class="filter">
             <h2> Filter </h2>
-                <button id="filter-vin">Vintage</button> <br>
-                <button id="filter-sun">Sunrise</button> <br>
-                <button id="filter-cp">Cross Process</button> <br>
-                <button id="filter-lomo">Lomo</button> <br>
-                <button id="filter-pin">Pinhole</button> <br>
-                <button id="filter-her">Her Majesty</button> <br>
+                <button id="filter-vin"><img src="images/FilterThumbnail/Vintage.png"/>Vintage</button> <br>
+                <button id="filter-vin"><img src="images/FilterThumbnail/Sunrise.png"/>Sunrise</button> <br>
+                <button id="filter-vin"><img src="images/FilterThumbnail/Cross Process.png"/>CrossProcess</button> <br>
+                <button id="filter-vin"><img src="images/FilterThumbnail/Lomo.png"/>Lomo</button> <br>
+                <button id="filter-vin"><img src="images/FilterThumbnail/Pinhole.png"/>Pinhole</button> <br>
+                <button id="filter-vin"><img src="images/FilterThumbnail/HerMajesty.png"/>HerMajesty</button> <br>
+
 
         </div>
 
