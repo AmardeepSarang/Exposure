@@ -40,15 +40,7 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
-        <div class="post-bt">
-            <a href="<?php echo $path ?>" download> &nbsp <i class="fas fa-download"></i>&nbsp Download Image &nbsp</a>
-            &nbsp &nbsp &nbsp
-            <a id="edit-up" href="#"> &nbsp <i class="fas fa-upload"></i>&nbsp Upload &nbsp</a>
-            &nbsp &nbsp &nbsp
-            <form action="<?php echo 'post.php?edit_of='.$id?>" method="POST" id="upload-form">
-            <button type="submit" name="submit" id="edit-sub"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edit &nbsp</button>
-            </form>
-        </div>
+
         <ul class="nav-links">
             <li><a href="gallery.php"><i class="fas fa-th"></i>&nbsp Gallery</a></li>
             <li><a href="user.php"><i class="fas fa-house-user"></i>&nbsp My dashboard</a></li>
@@ -69,25 +61,35 @@
     </div>
     <div class="editor">
 
-        <div class="display">
-            <div class="inner">
-            <div class="loading-screen">
-<div class="spinner"></div>
-            </div>
-                <canvas id="editor-can"></canvas>
-            </div>
-        </div>
-
         <div class="filter">
             <h2> Filter </h2>
-                <button id="filter-vin"><img src="images/FilterThumbnail/Vintage.png"/>Vintage</button> <br>
-                <button id="filter-vin"><img src="images/FilterThumbnail/Sunrise.png"/>Sunrise</button> <br>
-                <button id="filter-vin"><img src="images/FilterThumbnail/Cross Process.png"/>CrossProcess</button> <br>
-                <button id="filter-vin"><img src="images/FilterThumbnail/Lomo.png"/>Lomo</button> <br>
-                <button id="filter-vin"><img src="images/FilterThumbnail/Pinhole.png"/>Pinhole</button> <br>
-                <button id="filter-vin"><img src="images/FilterThumbnail/HerMajesty.png"/>HerMajesty</button> <br>
+            <button id="filter-vin"><img src="images/FilterThumbnail/Vintage.png" />Vintage</button> <br>
+            <button id="filter-vin"><img src="images/FilterThumbnail/Sunrise.png" />Sunrise</button> <br>
+            <button id="filter-vin"><img src="images/FilterThumbnail/Cross Process.png" />CrossProcess</button> <br>
+            <button id="filter-vin"><img src="images/FilterThumbnail/Lomo.png" />Lomo</button> <br>
+            <button id="filter-vin"><img src="images/FilterThumbnail/Pinhole.png" />Pinhole</button> <br>
+            <button id="filter-vin"><img src="images/FilterThumbnail/HerMajesty.png" />HerMajesty</button> <br>
 
 
+        </div>
+
+        <div class="display">
+            <div class="inner">
+                <div class="loading-screen">
+                    <div class="spinner"></div>
+                </div>
+                <canvas id="editor-can"></canvas>
+            </div>
+
+            <div class="post-bt editor-bt">
+                <a href="<?php echo $path ?>" download> &nbsp <i class="fas fa-download"></i>&nbsp Download Image &nbsp</a>
+                &nbsp &nbsp &nbsp
+                <a id="edit-up" href="#"> &nbsp <i class="fas fa-upload"></i>&nbsp Upload &nbsp</a>
+                &nbsp &nbsp &nbsp
+                <form action="<?php echo 'post.php?edit_of=' . $id ?>" method="POST" id="upload-form">
+                    <button type="submit" name="submit" id="edit-sub"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edit &nbsp</button>
+                </form>
+            </div>
         </div>
 
         <div class="edit">

@@ -35,10 +35,13 @@ Main nav bar
   height: 80%;
   float: left;
   align-items: center;
-  padding: 3vh;
+  padding-left: 3vh;
+  padding-top: 2vh;
+  padding-right:3vh ;
+  padding-bottom: 0;
 }
 
-.post-bt a, #edit-sub{
+.post-bt a{
 
   background-color: #ee6352;
   padding: 5px;
@@ -91,6 +94,8 @@ Main nav bar
 
 .nav-links li a:active{
   background-color: white;
+}
+
 }
 
 @media screen and (max-width: 768px) {
@@ -991,12 +996,107 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 
 /*///////////////////////////////////////////////////////////////////////////////*/
 /* Editor */
-
+.editor{
+padding: 0;
+overflow: hidden;
+  height: 90%;
+}
+/* main 3 panel of editor*/
 .editor .filter{
-  position: fixed;
-  width: 320px;
+  float: left;
+  width:25%;
+ 
   height: 100%;
   background: #ee6352;
+  overflow: scroll;
+  scrollbar-width: thin;
+}
+
+.editor .display{
+  float: left;
+  width:50%;
+  height: 100%;
+  background: #d3d3d3;
+  
+}
+
+
+.editor .edit{
+  float: left;
+  width:25%;
+  height: 100%;
+  background: #ee6352;
+
+}
+
+
+@media screen and (max-width: 770px) {
+
+  .editor .display{
+    width:75%;  
+  }
+  
+  
+  .editor .edit{
+    display: none;
+  
+  }
+  
+}
+
+/* responsive editor buttons*/
+.editor-bt{
+  background-color: #292F36;
+  height: 10%;
+  width: 100%;
+}
+
+.editor-bt a, .editor-bt form{
+  border-radius: 0px;
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+.editor-bt form{
+ padding: 0; 
+ 
+ display: inline-block;
+}
+
+.editor-bt form button{
+  border-radius: 0;
+  padding: 10px 24px;
+  height: 100%;
+  width: 100%;
+
+  background-color: #ee6352;
+
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 1s;
+  
+}
+
+/* rest of editor css*/
+
+.editor .filter::-webkit-scrollbar-track
+{
+  border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #787776;
+}
+
+.editor .filter::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #787776;
+}
+
+.editor .filter::-webkit-scrollbar-thumb
+{
+  border-radius: 5px;
+    background-color: #2f357d;
 }
 
 .editor .filter h2{
@@ -1020,7 +1120,9 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   text-decoration: none;
   background-color: transparent;
   align-items: center;
-  margin-left: 45px;
+
+  margin:0 auto;
+    display:block;
   margin-top: 20px;
   border: none;
   width: 220px;
@@ -1045,16 +1147,10 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
 .editor .filter ul li:hover{
   background: #f7432d;
 }
-.editor .display{
-  position: fixed;
-  width: calc(100% - 640px);
-  height: 100%;
-  background: #d3d3d3;
-  left: 320px;
-}
+
 .editor .display .inner{
   width: 100%;
-  height: 100%;
+  height: 90%;
   padding: 0;
 }
 #editor-can{
@@ -1118,12 +1214,25 @@ background: linear-gradient(0deg, rgba(238,99,82,0.7898688580482416) 0%, rgba(47
   max-height:93%;
   margin: auto;
 }
-.editor .edit{
-  position: fixed;
-  width: 320px;
-  height: 100%;
-  background: #ee6352;
-  right: 0px;
+
+
+.editor .edit::-webkit-scrollbar-track
+{
+  border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #787776;
+}
+
+.editor .edit::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #787776;
+}
+
+.editor .edit::-webkit-scrollbar-thumb
+{
+  border-radius: 5px;
+    background-color: #2f357d;
 }
 
 .editor .edit h2{
