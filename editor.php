@@ -123,9 +123,9 @@
                 <input type="range" min="-9" max="9" value="0" class="slider" id="slide-noise">
             </div>
 
-            <h3> Texture And Clarity </h3>
+            <h3> Vibrance </h3>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="0" max="100" value="50" class="slider" id="slide-vib">
             </div>
 
 

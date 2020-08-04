@@ -126,6 +126,7 @@ $("#slide-exp").change(function () {
     var val = $(this).val()
     console.log(val)
     Caman("#editor-can", function () {
+        this.revert(false);
         this.exposure(val).render();
     });
 })
@@ -134,7 +135,9 @@ $("#slide-cont").change(function () {
     var val = $(this).val()
     console.log(val)
     Caman("#editor-can", function () {
-        this.contrast(val).render();
+        this.revert(false);
+        this.contrast(val);
+        this.render();
     });
 })
 
@@ -142,6 +145,7 @@ $("#slide-sat").change(function () {
     var val = $(this).val()
     console.log(val)
     Caman("#editor-can", function () {
+        this.revert(false);
         this.saturation(val).render();
     });
 })
@@ -150,6 +154,7 @@ $("#slide-hue").change(function () {
     var val = $(this).val()
     console.log(val)
     Caman("#editor-can", function () {
+        this.revert(false);
         this.hue(val).render();
     });
 })
@@ -158,6 +163,7 @@ $("#slide-noise").change(function () {
     var val = $(this).val()
     console.log(val)
     Caman("#editor-can", function () {
+        this.revert(false);
         this.noise(val).render();
     });
 })
@@ -166,6 +172,7 @@ $("#slide-noise").change(function () {
     var val = $(this).val()
     console.log(val)
     Caman("#editor-can", function () {
+        this.revert(false);
         this.sharpen(val).render();
     });
 
@@ -175,12 +182,6 @@ $("#slide-noise").change(function () {
 //////////////////////////////////////
 ////filters
 ///////////////////////////////////////
-$("#vintage-btn").change(function () {
-
-    Caman("#editor-can", function () {
-        this.vintage().render();
-    });
-})
 
 $("#filter-vin").on("click", function () {
     loadingOn()
