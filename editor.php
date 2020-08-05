@@ -82,12 +82,13 @@
             </div>
 
             <div class="post-bt editor-bt">
-                <a href="<?php echo $path ?>" download> &nbsp <i class="fas fa-download"></i>&nbsp Download Image &nbsp</a>
-                &nbsp &nbsp &nbsp
-                <a id="edit-up" href="#"> &nbsp <i class="fas fa-upload"></i>&nbsp Upload &nbsp</a>
-                &nbsp &nbsp &nbsp
+                <button id="slider-bt"><i class="fas fa-sliders-h"></i><span class="button-name">&nbsp Show sliders &nbsp</span></button>
+                <a href="<?php echo $path ?>" download> &nbsp <i class="fas fa-download"></i><span class="button-name">&nbsp Download Image &nbsp</span></a>
+        
+                <a id="edit-up" href="#"> &nbsp <i class="fas fa-upload"></i><span class="button-name">&nbsp Upload &nbsp</span></a>
+            
                 <form action="<?php echo 'post.php?edit_of=' . $id ?>" method="POST" id="upload-form">
-                    <button type="submit" name="submit" id="edit-sub"> &nbsp <i class="fas fa-plus"></i>&nbsp Submit edit &nbsp</button>
+                    <button type="submit" name="submit" id="edit-sub"> &nbsp <i class="fas fa-plus"></i><span class="button-name">&nbsp Submit edit &nbsp</span></button>
                 </form>
             </div>
         </div>

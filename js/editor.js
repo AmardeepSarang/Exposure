@@ -237,3 +237,12 @@ $("#filter-her").on("click", function () {
         });
     });
 })
+
+/////////////////////////////////////
+///slider pop up for mobile
+
+$("#slider-bt").click(function () {
+    console.log("pop")
+    $('.editor .edit').toggleClass('edit-popup')
+
+});
