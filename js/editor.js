@@ -122,80 +122,46 @@ function loadingOff() {
 //////////////////////
 //listen for change in sliders
 ////////////////////////
-$("#slide-exp").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
+
+var img = new Image();
+
+
+
+
+
+$('input[type=range]').change(Slide);
+function Slide() {
+    var exp = parseInt($('#slide-exp').val());
+    var sat = parseInt($('#slide-sat').val());
+    var tint = parseInt($('#slide-hue').val());
+    var cont = parseInt($('#slide-cont').val());
+    var sharp = parseInt($('#slide-sharp').val());
+    var vib = parseInt($('#slide-vin').val());
+    var grain = parseInt($('#slide-noise').val());
+
+    Caman("#editor-can", img, function () {
         this.revert(false);
-        this.exposure(val).render();
+        this.exposure(exp);
+
+        
+        this.saturation(sat);
+        this.hue(tint);
+        this.noise(grain);
+        this.sharpen(sharp);
+        this.vibrance(vib);
+        this.render();
     });
-})
-
-$("#slide-cont").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
-        this.revert(false);
-        this.contrast(val).render();
-    });
-})
-
-$("#slide-sat").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
-        this.revert(false);
-        this.saturation(val).render();
-    });
-})
-
-$("#slide-hue").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
-        this.revert(false);
-        this.hue(val).render();
-    });
-})
-
-$("#slide-noise").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
-        this.revert(false);
-        this.noise(val).render();
-    });
-})
-
-$("#slide-sharp").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
-        this.revert(false);
-        this.sharpen(val).render();
-    });
-
-})
-
-$("#slide-vib").change(function () {
-    var val = $(this).val()
-    console.log(val)
-    Caman("#editor-can", function () {
-        this.revert(false);
-        this.vibrance(val).render();
-    });
-
-})
-
-
+}
 
 //////////////////////////////////////
 ////filters
 ///////////////////////////////////////
 
+
 $("#filter-vin").on("click", function () {
     loadingOn()
     Caman("#editor-can", function () {
+        this.revert(false);
         this.vintage().render(function () {
             loadingOff()
         });
@@ -203,32 +169,39 @@ $("#filter-vin").on("click", function () {
 
 })
 
+
 $("#filter-sun").on("click", function () {
     loadingOn()
     Caman("#editor-can", function () {
+        this.revert(false);
         this.sunrise().render(function () {
             loadingOff()
         });
     });
 })
 
+
 $("#filter-cp").on("click", function () {
     loadingOn()
     Caman("#editor-can", function () {
+        this.revert(false);
         this.crossProcess().render(function () {
             loadingOff()
         });
     });
 })
 
+
 $("#filter-lomo").on("click", function () {
     loadingOn()
     Caman("#editor-can", function () {
+        this.revert(false);
         this.lomo().render(function () {
             loadingOff()
         });
     });
 })
+
 
 $("#filter-pin").on("click", function () {
     loadingOn()
@@ -239,14 +212,18 @@ $("#filter-pin").on("click", function () {
     });
 })
 
+
 $("#filter-her").on("click", function () {
     loadingOn()
     Caman("#editor-can", function () {
+        this.revert(false);
         this.herMajesty().render(function () {
             loadingOff()
         });
     });
 })
+
+
 
 /////////////////////////////////////
 ///slider pop up for mobile
