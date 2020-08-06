@@ -1004,7 +1004,6 @@ overflow: hidden;
 .editor .filter{
   float: left;
   width:25%;
- 
   height: 100%;
   background: #ee6352;
   overflow: scroll;

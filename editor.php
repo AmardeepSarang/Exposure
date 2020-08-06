@@ -64,11 +64,11 @@
         <div class="filter">
             <h2> Filter </h2>
             <button id="filter-vin"><img src="images/FilterThumbnail/Vintage.png" />Vintage</button> <br>
-            <button id="filter-vin"><img src="images/FilterThumbnail/Sunrise.png" />Sunrise</button> <br>
-            <button id="filter-vin"><img src="images/FilterThumbnail/Cross Process.png" />CrossProcess</button> <br>
-            <button id="filter-vin"><img src="images/FilterThumbnail/Lomo.png" />Lomo</button> <br>
-            <button id="filter-vin"><img src="images/FilterThumbnail/Pinhole.png" />Pinhole</button> <br>
-            <button id="filter-vin"><img src="images/FilterThumbnail/HerMajesty.png" />HerMajesty</button> <br>
+            <button id="filter-sun"><img src="images/FilterThumbnail/Sunrise.png" />Sunrise</button> <br>
+            <button id="filter-cp"><img src="images/FilterThumbnail/Cross Process.png" />CrossProcess</button> <br>
+            <button id="filter-lomo"><img src="images/FilterThumbnail/Lomo.png" />Lomo</button> <br>
+            <button id="filter-pin"><img src="images/FilterThumbnail/Pinhole.png" />Pinhole</button> <br>
+            <button id="filter-her"><img src="images/FilterThumbnail/HerMajesty.png" />HerMajesty</button> <br>
 
 
         </div>
@@ -113,7 +113,7 @@
 
             <h3> Contrast </h3>
             <div class="slidecontainer">
-                <input type="range" min="-5" max="5" value="0" class="slider" id="slide-cont">
+                <input type="range" min="-20" max="20" value="0" class="slider" id="slide-cont">
             </div>
 
             <h3> Sharpness </h3>
@@ -121,14 +121,15 @@
                 <input type="range" min="-100" max="100" value="0" class="slider" id="slide-sharp">
             </div>
 
-            <h3> Grain </h3>
-            <div class="slidecontainer">
-                <input type="range" min="-9" max="9" value="0" class="slider" id="slide-noise">
-            </div>
 
             <h3> Vibrance </h3>
             <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="slide-vib">
+                <input type="range" min="-100" max="100" value="0" class="slider" id="slide-vib">
+            </div>
+
+            <h3> Grain </h3>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="30" value="0" class="slider" id="slide-noise">
             </div>
 
 

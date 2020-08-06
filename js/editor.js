@@ -136,8 +136,7 @@ $("#slide-cont").change(function () {
     console.log(val)
     Caman("#editor-can", function () {
         this.revert(false);
-        this.contrast(val);
-        this.render();
+        this.contrast(val).render();
     });
 })
 
@@ -168,7 +167,7 @@ $("#slide-noise").change(function () {
     });
 })
 
-$("#slide-noise").change(function () {
+$("#slide-sharp").change(function () {
     var val = $(this).val()
     console.log(val)
     Caman("#editor-can", function () {
@@ -177,6 +176,17 @@ $("#slide-noise").change(function () {
     });
 
 })
+
+$("#slide-vib").change(function () {
+    var val = $(this).val()
+    console.log(val)
+    Caman("#editor-can", function () {
+        this.revert(false);
+        this.vibrance(val).render();
+    });
+
+})
+
 
 
 //////////////////////////////////////
