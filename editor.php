@@ -68,7 +68,11 @@
             <button id="filter-cp"><img src="images/FilterThumbnail/Cross Process.png" />CrossProcess</button> <br>
             <button id="filter-lomo"><img src="images/FilterThumbnail/Lomo.png" />Lomo</button> <br>
             <button id="filter-pin"><img src="images/FilterThumbnail/Pinhole.png" />Pinhole</button> <br>
-            <button id="filter-her"><img src="images/FilterThumbnail/HerMajesty.png" />HerMajesty</button> <br>
+            <button id="filter-her"><img src="images/FilterThumbnail/HerMajesty.png" />Her Majesty</button> <br>
+            <button id="filter-org"><img src="images/FilterThumbnail/OrangePeel.png" />Orange Peel</button> <br>
+            <button id="filter-haze"><img src="images/FilterThumbnail/Haze.png" />Haze</button> <br>
+            <button id="filter-rad"><img src="images/FilterThumbnail/RadialBlur.png" />Radial Blur</button> <br>
+            
 
 
         </div>
@@ -113,7 +117,7 @@
 
             <h3> Contrast </h3>
             <div class="slidecontainer">
-                <input type="range" min="-20" max="20" value="0" class="slider" id="slide-cont">
+                <input type="range" min="-20" max="20" value="0" class="slider" id="slide-cntrst">
             </div>
 
             <h3> Sharpness </h3>

@@ -134,21 +134,20 @@ function Slide() {
     var exp = parseInt($('#slide-exp').val());
     var sat = parseInt($('#slide-sat').val());
     var tint = parseInt($('#slide-hue').val());
-    var cont = parseInt($('#slide-cont').val());
+    var cntrst = parseInt($('#slide-cntrst').val());
     var sharp = parseInt($('#slide-sharp').val());
-    var vib = parseInt($('#slide-vin').val());
+    var vib = parseInt($('#slide-vib').val());
     var grain = parseInt($('#slide-noise').val());
 
     Caman("#editor-can", img, function () {
         this.revert(false);
         this.exposure(exp);
-
-        
         this.saturation(sat);
         this.hue(tint);
         this.noise(grain);
         this.sharpen(sharp);
         this.vibrance(vib);
+        this.contrast(cntrst);
         this.render();
     });
 }
@@ -223,6 +222,44 @@ $("#filter-her").on("click", function () {
     });
 })
 
+$("#filter-org").on("click", function () {
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.revert(false);
+        this.orangePeel().render(function () {
+            loadingOff()
+        });
+    });
+})
+
+$("#filter-haze").on("click", function () {
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.revert(false);
+        this.hazyDays().render(function () {
+            loadingOff()
+        });
+    });
+})
+
+$("#filter-her").on("click", function () {
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.revert(false);
+        this.herMajesty().render(function () {
+            loadingOff()
+        });
+    });
+})
+
+$("#filter-rad").on("click", function () {
+    loadingOn()
+    Caman("#editor-can", function () {
+        this.radialBlur().render(function () {
+            loadingOff()
+        });
+    });
+})
 
 
 /////////////////////////////////////
