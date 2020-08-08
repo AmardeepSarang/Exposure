@@ -82,7 +82,9 @@
                 <div class="loading-screen">
                     <div class="spinner"></div>
                 </div>
+                <div class="canvas-cont">
                 <canvas id="editor-can"></canvas>
+                </div>
             </div>
 
             <div class="post-bt editor-bt">

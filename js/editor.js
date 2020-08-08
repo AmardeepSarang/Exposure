@@ -28,6 +28,42 @@ function resetSlider() {
         $(this).val(mid)
     })
 }
+
+function resizeContainer(img){
+    imgW=img.width;
+    imgH=img.height;
+
+    
+    conH=$(".canvas-cont").height()
+    conW=$(".canvas-cont").width()
+/*
+    console.log(imgH)
+    console.log(imgW)
+    console.log(conH)
+    console.log(conW)
+*/
+    //calculate img ratio
+    imgRatio=imgW/imgH
+
+
+    if(imgH>imgW){
+        //change width of container based on ratio of img
+        newW=conH*imgRatio
+        $(".canvas-cont").width(newW)
+        //console.log(newW+" x "+conH+" ratio OG:"+imgRatio+" New ratio:"+newW/conH)
+
+    }else{
+        //change height of container based on ratio of img
+        newH=conW/imgRatio
+        $(".canvas-cont").height(newH)
+        //console.log(newH+" x "+conH+" ratio OG:"+imgRatio+" New ratio:"+conW/newH)
+        
+
+
+    }
+
+}
+
 function importImg(input) {
     //prints img  file from file input on to canvas
     if (input.files && input.files[0]) {
@@ -39,6 +75,9 @@ function importImg(input) {
             img = new Image();
             img.src = reader.result;
             img.onload = function () {
+                $(".canvas-cont").height("")
+                $(".canvas-cont").width("")
+                resizeContainer(img)
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0, img.width, img.height);
@@ -68,6 +107,7 @@ function importStartImg(path) {
     img = new Image();
     img.src = path;
     img.onload = function () {
+        resizeContainer(img)
         canvas.width = img.width;
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0, img.width, img.height);
@@ -148,7 +188,10 @@ function Slide() {
         this.sharpen(sharp);
         this.vibrance(vib);
         this.contrast(cntrst);
-        this.render();
+        loadingOn()
+        this.render(function () {
+            loadingOff()
+        });
     });
 }
 
