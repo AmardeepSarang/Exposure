@@ -38,7 +38,7 @@
         $goto="../sign_in.php";
         //check that password matches one on record
         if (password_verify($pass, $userPass)) {
-
+                    //wait for transaction to be complete before commit
                     mysqli_autocommit($db, FALSE);
 
                     /* Insert some values */
@@ -53,9 +53,7 @@
                         session_unset();
                         session_destroy();
                         print "<p>Your account was deactivate successful. You can sign up for a new account at anytime!</p>";
-    
                         echo "<p> You have been securely loged out. We hope to see you again on Exposure</p>";
-
                     }
                  
             

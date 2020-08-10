@@ -112,7 +112,7 @@ $result = mysqli_query($db, $query);
   <div class="grid-col grid-col--3"></div>
   <div class="grid-col grid-col--4"></div>
         <?php
-
+        $admin=isAdmin($db,$user);
         while ($row = mysqli_fetch_assoc($result)) {
             // output data of each row
             //$row = mysqli_fetch_assoc($result);
@@ -152,6 +152,13 @@ $result = mysqli_query($db, $query);
                     <span><button class="edit-sl-arw-l"><i class="fas fa-arrow-left"></i></button></span>
                     <span><button class="edit-sl-bn"><i class="fas fa-images"></i></button></span>
                     <span><button class="edit-sl-arw-r"><i class="fas fa-arrow-right"></i></button></span>
+                    <?php
+                    if($admin){
+                    ?>
+                    <span><button onclick="location.href='<?php echo 'include/delete_img.php?id='.$id?>'" class="edit-sl-delete"><i class="fas fa-trash-alt"></i></button></span>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

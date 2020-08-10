@@ -168,6 +168,7 @@ function addLike($db, $user, $id)
 //////////////////////////////////////////////////
 //user functions
 //////////////////////////////////////////////////
+
 function getUserName($db,$user){
     $query = "SELECT * FROM `user` WHERE user_id=$user";
     $result = mysqli_query($db, $query);
@@ -217,5 +218,28 @@ function getLikeOnEdited($db, $user)
     $row = mysqli_fetch_assoc($result);
     echo $row["count"];
 }
+//////////////////////////////////////////////////
+//delete functions
+//////////////////////////////////////////////////
 
+function isAdmin($db,$user){
+    $query = "SELECT * FROM `user` WHERE user_id=$user";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    $admin = $row["admin"];
+
+    if($admin=="1"){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+function getPath($db,$id){
+    $query = "SELECT * FROM `image` WHERE Img_id=$id";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    return $row["Img_file_name"];
+}
 ?>
