@@ -342,3 +342,34 @@ $(".like-bt").click(function () {
 
     }
 })
+
+
+/////////////////////////////////////////////////////////////////////
+///script for lazy loading
+///////////////////////////////////////////////////////////////////// 
+/*
+$.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+  
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+  
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+
+function lazyLoader(){
+    
+  $('.img_box img').each(function() {
+    
+  if ($(this).isInViewport()) {
+    //console.log(this)
+    $(this).attr("src",$(this).attr("data-src"));
+  }
+});
+}
+ 
+$(window).scroll(function(){
+    lazyLoader()
+  });
+  */
