@@ -63,4 +63,4 @@ Although allot of effort has been put in already, we do believe that there is st
 | :---: |:---:|
 |   <img src="https://github.com/AmardeepSarang/image_summer_project/blob/master/images/amar_profile.jpg?raw=true" alt="Amardeep Sarang" width="250"/> | <img src="https://github.com/AmardeepSarang/image_summer_project/blob/master/images/jerin_profile.jpg?raw=true" alt="Jerin John" width="250"/>
  | 
-| [Github](https://github.com/AmardeepSarang?tab=repositories) - [Contact]() | [Github]()https://github.com/jerin10john - [Contact]()
+| [Github](https://github.com/AmardeepSarang?tab=repositories) - [Contact]() | [Github](https://github.com/jerin10john) - [Contact]()
